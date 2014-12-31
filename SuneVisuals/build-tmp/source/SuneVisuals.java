@@ -17,8 +17,17 @@ import java.io.IOException;
 
 public class SuneVisuals extends PApplet {
 
+// TO DO:
+// - dynamic color palette generation
+// 
+// - automatic controlSignal mapping
+// 
+// 
 
 
+
+
+public final boolean DEBUG = true;
 
 OscP5 oscP5;
 NetAddress myRemoteLocation;
@@ -26,9 +35,17 @@ NetAddress myRemoteLocation;
 Composition[] compositions;
 int currentComposition;
 
-String s;
-
-boolean debug = false;
+float[] controlSignals;
+int currentController;
+float currentControllerValue;
+// float control01;
+// float control02;
+// float control03;
+// float control04;
+// float control05;
+// float control06;
+// float control07;
+// float control08;
 
 public void setup()
 {
@@ -38,9 +55,11 @@ public void setup()
 	myRemoteLocation = new NetAddress("127.0.0.1", 7778);
 
 	// size(displayWidth, displayHeight, "processing.core.PGraphicsRetina2D", P2D);
-	size(displayWidth, displayHeight, P2D);
+	size(displayWidth, displayHeight, OPENGL);
 	smooth();
 	background(0);
+
+	controlSignals = new float[8];
 
 	compositions = new Composition[10];
 	compositions[0] = new Idea01();
@@ -60,7 +79,7 @@ public void setup()
 public boolean sketchFullScreen()
 {
 	// use window mode, display fps on top
-	if (debug)
+	if (DEBUG)
 	{
   		return false;
 	}
@@ -76,7 +95,7 @@ public void draw()
 	compositions[currentComposition].update();
 	compositions[currentComposition].display();
 
-	if (debug)
+	if (DEBUG)
 	{
 		frame.setTitle(" " + frameRate);
 	}
@@ -86,8 +105,12 @@ class Composition
 
 	int x;
 	int y;
+	int nSeed = PApplet.parseInt(random(1000));
+	int rSeed = PApplet.parseInt(random(1000));
 	int backgroundColor;
+	int backgroundAlpha;
 	int drawColor;
+	int drawAlpha;
 
 	public void update()
 	{		
@@ -96,29 +119,12 @@ class Composition
 	public void display()
 	{
 	}
-}
 
-class Idea01 extends Composition
-{
-	public void update()
-	{	
-		x = 0;
-		y = 0;
-		backgroundColor = color(255);
-		drawColor = color(255, 91, 154);
-	}
-
-	public void display()
+	public void seed()
 	{
-		background(backgroundColor);
-		translate(width / 2, height / 2);
-		noStroke();
-		fill(drawColor);
-		ellipse(x, y, 0.5f * width, 0.5f * width);
-		fill(255);
-		textAlign(CENTER, CENTER);
-		textSize(30);
-		text("Idea01", 0, 0);
+		nSeed = PApplet.parseInt(random(1000));
+		rSeed = PApplet.parseInt(random(1000));
+		println("nSeed = " + nSeed + "    |    " + "rSeed = " + rSeed);
 	}
 }
 
@@ -338,16 +344,120 @@ class Idea10 extends Composition
 	}	
 }
 
+class Idea01 extends Composition
+{	
+	// variable1 = controlSignals[0] * scalingFactor1;
+	// variable2 = controlSignals[1] * scalingFactor2;
+	// variable3 = controlSignals[2] * scalingFactor3;
+	// variable4 = controlSignals[3] * scalingFactor4;
+	// variable5 = controlSignals[4] * scalingFactor5;
+	// variable6 = controlSignals[5] * scalingFactor6;
+	// variable7 = controlSignals[6] * scalingFactor7;
+	// variable8 = controlSignals[7] * scalingFactor8;
+
+	int agentsCount = 2000;
+	Agent[] agents = new Agent[10000];
+	float noiseScale = 500;
+	float noiseStrength = 2;
+	float speed = 4;
+
+	Idea01()
+	{
+		for (int i = 0; i < agents.length; i++)
+		{
+			agents[i] = new Agent();
+		}
+	}
+
+	public boolean isActive()
+	{
+		if (currentComposition == 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public void update()
+	{	
+		backgroundColor = color(255);
+		backgroundAlpha = 10;
+		drawColor = color(255);
+		drawAlpha = 220;
+		noiseSeed(nSeed);
+		randomSeed(rSeed);
+
+		agentsCount = PApplet.parseInt(controlSignals[0] * 5000);
+		noiseScale = controlSignals[1] * 500;
+		noiseStrength = controlSignals[2] * 50;
+		speed = controlSignals[3] * 20;
+		// variable5 = controlSignals[4] * scalingFactor5;
+		// variable6 = controlSignals[5] * scalingFactor6;
+		// variable7 = controlSignals[6] * scalingFactor7;
+		// variable8 = controlSignals[7] * scalingFactor8;
+	}
+
+	public void display()
+	{
+		noStroke();
+		fill(backgroundColor,backgroundAlpha);
+		rect(0, 0, width, height);
+		// stroke(drawColor, drawAlpha);
+		strokeCap(SQUARE);
+		strokeWeight(3);
+
+		for (int i = 0; i < agentsCount; i++)
+		{
+			agents[i].update();
+		}
+	}
+
+	class Agent
+	{
+		PVector p;
+		PVector pOld;
+		float stepSize;
+		float angle;
+
+		Agent()
+		{
+			p = new PVector(random(width), random(height));
+			pOld = new PVector(p.x, p.y);
+			stepSize = random(2);
+		}
+
+		public void update()
+		{
+			angle = noise(p.x / noiseScale, p.y / noiseScale, 300) * noiseStrength;
+
+			p.x += cos(angle) * stepSize * speed;
+			p.y += sin(angle) * stepSize * speed;
+
+			if (p.x < -10) p.x = pOld.x = width + 10;
+			if (p.x > width + 10) p.x = pOld.x = -10;
+			if (p.y < -10) p.y = pOld.y = height + 10;
+			if (p.y > height + 10) p.y = pOld.y = -10;
+
+			// stroke((width / p.x) * 255);
+			stroke((p.y / width) * 255, random(40), (p.x / width) * 255, drawAlpha);
+			line(pOld.x, pOld.y, p.x, p.y);
+
+			pOld.set(p);
+		}
+	}
+}
 public void oscEvent(OscMessage theOscMessage)
 {
+
+	println("Incoming OSC Message: " +  theOscMessage);
 
 	if (theOscMessage.checkAddrPattern("/quit"))
 	{
 		exit();
 	}
-
-	s = theOscMessage.toString();
-	println("In oscEvent(), s = %s", s);
 
 	if (theOscMessage.checkAddrPattern("/composition"))
 	{
@@ -355,6 +465,76 @@ public void oscEvent(OscMessage theOscMessage)
 										0,
 										(compositions.length - 1));
 	}
+
+	if (theOscMessage.checkAddrPattern("/seed"))
+	{
+		compositions[currentComposition].seed();
+	}
+
+	if (theOscMessage.checkAddrPattern("/controlSignal"))
+	{
+		int currentController = theOscMessage.get(0).intValue();
+		float currentControllerValue = theOscMessage.get(1).floatValue();
+		controlSignals[currentController] = currentControllerValue;
+
+		println("theOscMessage.get(0).intValue() = " + theOscMessage.get(0).intValue());
+		println("theOscMessage.get(1).floatValue() = " + theOscMessage.get(1).floatValue());
+		println(controlSignals[currentController]);
+
+		// TO DO: send this controller array only to currently active composition,
+		// then map it to parameters there.
+	}
+
+	/*
+
+	if (theOscMessage.checkAddrPattern("/control01"))
+	{
+		control01 = theOscMessage.get(0).floatValue();
+		// println("control01 = " + control01);
+	}
+
+	if (theOscMessage.checkAddrPattern("/control02"))
+	{
+		control02 = theOscMessage.get(0).floatValue();
+		// println("control02 = " + control02);
+	}
+
+	if (theOscMessage.checkAddrPattern("/control03"))
+	{
+		control03 = theOscMessage.get(0).floatValue();
+		// println("control03 = " + control03);
+	}
+
+	if (theOscMessage.checkAddrPattern("/control04"))
+	{
+		control04 = theOscMessage.get(0).floatValue();
+		// println("control04 = " + control04);
+	}
+
+	if (theOscMessage.checkAddrPattern("/control05"))
+	{
+		control05 = theOscMessage.get(0).floatValue();
+		// println("control05 = " + control05);
+	}
+
+	if (theOscMessage.checkAddrPattern("/control06"))
+	{
+		control06 = theOscMessage.get(0).floatValue();
+		// println("control06 = " + control06);
+	}
+
+	if (theOscMessage.checkAddrPattern("/control07"))
+	{
+		control07 = theOscMessage.get(0).floatValue();
+		// println("control07 = " + control07);
+	}
+
+	if (theOscMessage.checkAddrPattern("/control08"))
+	{
+		control08 = theOscMessage.get(0).floatValue();
+		// println("control08 = " + control08);
+	}
+	*/
 }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "SuneVisuals" };

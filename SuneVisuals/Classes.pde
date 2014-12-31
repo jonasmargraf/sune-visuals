@@ -3,8 +3,12 @@ class Composition
 
 	int x;
 	int y;
+	int nSeed = int(random(1000));
+	int rSeed = int(random(1000));
 	color backgroundColor;
+	color backgroundAlpha;
 	color drawColor;
+	color drawAlpha;
 
 	void update()
 	{		
@@ -13,29 +17,12 @@ class Composition
 	void display()
 	{
 	}
-}
 
-class Idea01 extends Composition
-{
-	void update()
-	{	
-		x = 0;
-		y = 0;
-		backgroundColor = color(255);
-		drawColor = color(255, 91, 154);
-	}
-
-	void display()
+	void seed()
 	{
-		background(backgroundColor);
-		translate(width / 2, height / 2);
-		noStroke();
-		fill(drawColor);
-		ellipse(x, y, 0.5 * width, 0.5 * width);
-		fill(255);
-		textAlign(CENTER, CENTER);
-		textSize(30);
-		text("Idea01", 0, 0);
+		nSeed = int(random(1000));
+		rSeed = int(random(1000));
+		println("nSeed = " + nSeed + "    |    " + "rSeed = " + rSeed);
 	}
 }
 
