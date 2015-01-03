@@ -14,9 +14,7 @@ import java.io.IOException;
 
 public class dumbAgent_restrictedRandom002 extends PApplet {
 
-// dumb agent moves randomly across canvas
-// agent's direction is limited to either:
-// NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST
+// RAINRAINRAIN ++ or maybe bubblezzz
 
 int NORTH = 0;
 int NORTHEAST = 1; 
@@ -29,9 +27,9 @@ int NORTHWEST= 7;
 
 float theSpeed = 5;
 float theDeviation = 15;
-// float diameter = 10;
-
 int theDirection;
+float theMaxDiameter;
+
 float theX, theY;
 
 Agent[] agents;
@@ -42,11 +40,11 @@ public void setup() {
 	smooth();
 	noFill();
 	stroke(0, 100);
-	background(255);
+	background(0);
 
-	theDirection = EAST;
+	theDirection = SOUTHEAST;
 
-	nAgents = 200;
+	nAgents = 1000;
 	agents = new Agent[nAgents];
 
 	if (theDirection == EAST || theDirection == WEST)
@@ -55,14 +53,16 @@ public void setup() {
 		for (int i = 0; i < nAgents; i++)
 		{
 			theY = (PApplet.parseFloat(height) / nAgents) * i;
-			theSpeed = 5 + random(15);
+			theSpeed = 2 + random(5);
 			theDeviation = 2 + random(15);
+			theMaxDiameter = 10 + random(80);
 
 			agents[i] = new Agent(theX,
 								  theY,
 								  theDirection,
 								  theSpeed,
-								  theDeviation);
+								  theDeviation,
+								  theMaxDiameter);
 		}	
 	}
 
@@ -72,14 +72,16 @@ public void setup() {
 		for (int i = 0; i < nAgents; i++)
 		{
 			theX = (PApplet.parseFloat(width) / nAgents) * i;
-			theSpeed = 5 + random(15);
+			theSpeed = 2 + random(5);
 			theDeviation = 2 + random(15);
+			theMaxDiameter = 30 + random(50);
 
 			agents[i] = new Agent(theX,
 								  theY,
 								  theDirection,
 								  theSpeed,
-								  theDeviation);
+								  theDeviation,
+								  theMaxDiameter);
 		}
 	}		
 }
@@ -102,7 +104,8 @@ public void keyPressed()
 {
 	if (key == DELETE || key == BACKSPACE)
 	{
-		background(255);
+		// background(255);
+		background(0, 125, 255);
 	}
 
 	if (key == ' ')
@@ -118,21 +121,28 @@ class Agent
 
 	int theDirection;
 	float speed;
-	float diameter = 10;
+	float diameter;
+	float maxDiameter;
 	float deviation;
 
-	Agent(float x, float y, int _theDirection, float _speed, float _deviation)
+	Agent(	float x, 
+			float y, 
+			int _theDirection, 
+			float _speed, 
+			float _deviation, 
+			float _maxDiameter)
 	{
 		position = new PVector(x, y);
 		direction = new PVector();
 		theDirection = _theDirection;
 		speed = _speed;
 		deviation = _deviation;
+		maxDiameter = _maxDiameter;
 	}
 
 	public void update()
 	{
-		diameter = random(2, 80);
+		diameter = random(2, maxDiameter);
 		// diameter = random(2, 15);
 
 		if (theDirection == NORTH)
@@ -187,8 +197,9 @@ class Agent
 	public void display()
 	{
 		noFill();
-		stroke (0, 125, 255, 100);
+		stroke (0, 125, 255, 30);
 		strokeWeight(diameter * 0.15f);
+		// strokeWeight(5);
 		ellipse(position.x, position.y, diameter, diameter);
 	}
 }
