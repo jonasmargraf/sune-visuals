@@ -18,7 +18,8 @@ import java.io.IOException;
 public class SuneVisuals extends PApplet {
 
 // TO DO:
-// - dynamic color palette generation
+// - dynamic color palette generation 
+// (gradients, mix with half of all objects / agents / lines being white or black...)
 // 
 // - automatic controlSignal mapping
 // 
@@ -27,7 +28,7 @@ public class SuneVisuals extends PApplet {
 
 
 
-public final boolean DEBUG = true;
+public final boolean DEBUG = false;
 
 OscP5 oscP5;
 NetAddress myRemoteLocation;
@@ -383,7 +384,7 @@ class Idea01 extends Composition
 
 	public void update()
 	{	
-		backgroundColor = color(255);
+		backgroundColor = color(0);
 		backgroundAlpha = 10;
 		drawColor = color(255);
 		drawAlpha = 220;
@@ -405,7 +406,7 @@ class Idea01 extends Composition
 		noStroke();
 		fill(backgroundColor,backgroundAlpha);
 		rect(0, 0, width, height);
-		// stroke(drawColor, drawAlpha);
+		stroke(drawColor, drawAlpha);
 		strokeCap(SQUARE);
 		strokeWeight(3);
 
@@ -441,8 +442,7 @@ class Idea01 extends Composition
 			if (p.y < -10) p.y = pOld.y = height + 10;
 			if (p.y > height + 10) p.y = pOld.y = -10;
 
-			// stroke((width / p.x) * 255);
-			stroke((p.y / width) * 255, random(40), (p.x / width) * 255, drawAlpha);
+			// stroke((p.y / width) * 255, random(40), (p.x / width) * 255, drawAlpha);
 			line(pOld.x, pOld.y, p.x, p.y);
 
 			pOld.set(p);

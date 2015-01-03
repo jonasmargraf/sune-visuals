@@ -4,17 +4,17 @@
 
 // define max diameter, make clusters of these spheres, move them
 
-
 // TO FIX: currently, diameter can be negative or greater than maxDiameter
 
 // TO DO: morph / grow over time from one position to next
 
 int nArcs;
 int seed;
+int style;
 float rotator[];
 float speedX;
 float speedY;
-float maxDiameter;
+// float maxDiameter;
 float diameter[];
 float diameterOffset;
 float diameter2 = 50;
@@ -26,15 +26,15 @@ ArcStructure arcStructure;
 
 void setup()
 {
-	// size(600, 400, OPENGL);
-	size(displayWidth, displayHeight, OPENGL);
+	size(1200, 800, OPENGL);
+	// size(displayWidth, displayHeight, OPENGL);
 	smooth();
 	noFill();
 	strokeCap(SQUARE);
 	background(255);
 
 	nArcs = 12;
-	maxDiameter = height;
+	// maxDiameter = height;
 	diameterOffset = 50;
 	rotator = new float[nArcs];
 	diameter = new float[nArcs];
@@ -57,7 +57,8 @@ void draw()
 
 	translate(width / 2, height / 2);
 	arcStructure.update();
-	arcStructure.display();
+	style = 1;
+	arcStructure.display(style);
 	// arcStructure(0, 0, nArcs, height);
 	
 	// for (int x = 50; x < width; x += 50)
@@ -77,7 +78,11 @@ void mousePressed()
 	seed = int(random(10000));
 	arcStructure.initialize();
 	// calculateArcParameters(nArcs, maxDiameter);
+}
 
+void keyPressed()
+{
+	arcStructure.getNewParameters();
 }
 
 // void arcStructure(float x, float y, int nArcs, float maxDiameter)
@@ -120,14 +125,16 @@ class ArcStructure
 	float x;
 	float y;
 	float maxDiameter;
+	int arcDisplayStyle;
 
-	CircleSegment[] circleSegments = new CircleSegment[1];
+	CircleSegment[] circleSegments = new CircleSegment[8];
 
 	ArcStructure()
 	{
 		x = 0;
 		y = 0;
-		maxDiameter = height;
+		arcDisplayStyle = 0;
+		maxDiameter = height * 0.5;
 		
 		for (int i = 0; i < circleSegments.length; i++)
 		{
@@ -143,6 +150,14 @@ class ArcStructure
 		}
 	}
 
+	void getNewParameters()
+	{
+	for (int i = 0; i < circleSegments.length; i++)
+		{
+			circleSegments[i].getNewParameters();
+		}	
+	}
+
 	void update()
 	{
 		for (int i = 0; i < circleSegments.length; i++)
@@ -151,11 +166,11 @@ class ArcStructure
 		}
 	}
 
-	void display()
+	void display(int arcDisplayStyle)
 	{
 		for (int i = 0; i < circleSegments.length; i++)
 		{
-			circleSegments[i].display();
+			circleSegments[i].display(arcDisplayStyle);
 		}
 	}
 
@@ -168,31 +183,82 @@ class ArcStructure
 		float angleDestination;
 		float rotationSpeed;
 		float growingSpeed;
+		boolean isGrowing;
 		// enum rotationDirection;
 		// enum growingDirection;
 
 		void initialize()
 		{
-			angleSize = HALF_PI;
+			angleSize = HALF_PI + random(HALF_PI);
 			angleOrigin = random(1) * TWO_PI * 2;
 			diameterOrigin = random(maxDiameter);
-			diameterDestination = diameterOrigin * 0.2;
-			angleDestination = angleOrigin + PI;
-			rotationSpeed = 0.05;
-			growingSpeed = 0.05;
+			diameterDestination = random(maxDiameter);
+			rotationSpeed = random(0.02) + 0.01;
+			growingSpeed = random(0.05) + 0.01;
+			if (random(1) >= 0.5)
+			{
+				angleDestination = angleOrigin + random(PI);
+				isGrowing = true;
+			}
+			else
+			{
+				angleDestination = angleOrigin - random(PI);
+				isGrowing = false;
+			}
+				println(isGrowing);
+				
+			println(rotationSpeed);
+		}
+
+		void getNewParameters()
+		{
+			seed = int(random(10000));
+			randomSeed(seed);
+			angleOrigin = angleDestination;
+			if (random(1) >= 0.5)
+			{
+				angleDestination = angleOrigin + random(TWO_PI);
+				diameterOrigin = diameterDestination;
+				diameterDestination = random(maxDiameter);
+				isGrowing = true;
+			}
+			else
+			{
+				angleDestination = angleOrigin - random(TWO_PI);
+				isGrowing = false;
+			}
 		}
 
 		void update()
 		{
 			// interpolate over time between origin and destination
+			angleOrigin = lerp(angleOrigin, angleDestination, rotationSpeed);
+			if (isGrowing)
+			{
+				diameterOrigin = lerp(diameterOrigin, diameterDestination, growingSpeed);
+			}
 		}
 
-		void display()
+		void display(int displayStyle)
 		{
-			fill(255, 127, 140, 50);
-			stroke(255, 127, 140, 150);
-			strokeWeight(1);
-			arc(x, y, diameterOrigin, diameterOrigin, angleOrigin, angleOrigin + angleSize);
+			switch (displayStyle)
+			{
+				case 0 :
+					fill(255, 127, 140, 50);
+					stroke(255, 127, 140, 150);
+					strokeWeight(1);
+					arc(x, y, diameterOrigin, diameterOrigin, angleOrigin, angleOrigin + angleSize);
+					break;
+				case 1 :
+					noFill();
+					stroke(255, 127, 140, 50);
+					strokeWeight(random(maxDiameter/4));
+					arc(x, y, diameterOrigin, diameterOrigin, angleOrigin, angleOrigin + angleSize);
+					stroke(255, 127, 140, 150);
+					strokeWeight(1);
+					arc(x, y, diameterOrigin, diameterOrigin, angleOrigin, angleOrigin + angleSize);
+					break;
+			}
 		}
 	}
 }

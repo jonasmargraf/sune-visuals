@@ -9,7 +9,7 @@
 import oscP5.*;
 import netP5.*;
 
-public final boolean DEBUG = true;
+public final boolean DEBUG = false;
 
 OscP5 oscP5;
 NetAddress myRemoteLocation;

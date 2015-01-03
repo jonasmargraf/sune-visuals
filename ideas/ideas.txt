@@ -1,0 +1,8 @@
+- dumb agents with restricted path drawing svg shapes from P_2_3_1_02
+
+- grids of smart agents that dissolve
+
+- lfos + little bit of noise to generate paths
+
+- check out P_2_2_4
+
