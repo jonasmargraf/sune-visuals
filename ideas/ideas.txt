@@ -6,3 +6,4 @@
 
 - check out P_2_2_4
 
+- for dumb agent rain: instead of circles, draw various SVGs or maybe long rectangles, maybe even "binary" codes or lines that go all over screen

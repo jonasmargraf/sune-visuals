@@ -32,8 +32,8 @@ ArcStructure[] arcStructures;
 
 public void setup()
 {
-	size(1280, 720, OPENGL);
-	// size(displayWidth, displayHeight, OPENGL);
+	// size(1280, 720, OPENGL);
+	size(displayWidth, displayHeight, OPENGL);
 	smooth();
 	noFill();
 	strokeCap(SQUARE);
@@ -41,7 +41,7 @@ public void setup()
 
 	initialArrangement = 0;
 	style = 1;
-	wrapStyle = 1;
+	wrapStyle = 0;
 
 	arcStructures = new ArcStructure[200];
 
@@ -50,7 +50,7 @@ public void setup()
 	{
 		// CENTER
 		case 0 :
-			nArcStructures = 40;
+			nArcStructures = 1;
 			for (int i = 0; i < nArcStructures; i++)
 			{
 				arcStructures[i] = new ArcStructure(width / 2, height / 2);
@@ -143,7 +143,7 @@ class ArcStructure
 
 	ArcStructure(float theX, float theY)
 	{
-		white = color(255, 150);
+		white = color(255, 50);
 		rosa = color(255, 127, 140, 150);
 		magenta = color(247, 0, 157, 50);
 		yellow = color(255, 255, 0, 50);
@@ -152,9 +152,9 @@ class ArcStructure
 		position = new PVector(theX, theY);
 		direction = new PVector();
 		arcDisplayStyle = 0;
-		maxDiameter = height * random(0.15f);
+		maxDiameter = height * random(0.1f);
 		// maxDiameter = height * 0.05;
-		speed = random(6);
+		speed = random(3, 8);
 		
 		for (int i = 0; i < circleSegments.length; i++)
 		{
@@ -335,7 +335,7 @@ class ArcStructure
 			}
 			if (theDrawColor == 2)
 			{
-				_drawColor = rosa;
+				_drawColor = navy;
 			}
 
 			switch (fillStyle)
@@ -360,7 +360,7 @@ class ArcStructure
 					noFill();
 					// stroke(_drawColor);
 					// stroke(255, 50);
-					stroke(0, 15);
+					stroke(0, 5);
 					strokeWeight(random(maxDiameter/4));
 					arc(position.x,
 						position.y,
