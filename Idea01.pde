@@ -1,4 +1,4 @@
-class Idea01 extends Composition
+class NoiseHair extends Composition
 {	
 	// variable1 = controlSignals[0] * scalingFactor1;
 	// variable2 = controlSignals[1] * scalingFactor2;
@@ -15,7 +15,7 @@ class Idea01 extends Composition
 	float noiseStrength = 2;
 	float speed = 4;
 
-	Idea01()
+	NoiseHair()
 	{
 		for (int i = 0; i < agents.length; i++)
 		{

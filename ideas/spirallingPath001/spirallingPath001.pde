@@ -10,7 +10,8 @@ float angle;
 
 PShape brush;
 
-void setup() {
+void setup()
+{
 	size(displayWidth, displayHeight, OPENGL);
 	background(0);
 	smooth();
@@ -26,7 +27,8 @@ void setup() {
 	brush.disableStyle();
 }
 
-void draw() {
+void draw()
+{
 	// background(255);
 	// translate(width / 2, height /2);
 

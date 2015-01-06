@@ -9,13 +9,14 @@
 import oscP5.*;
 import netP5.*;
 
-public final boolean DEBUG = false;
+boolean DEBUG = true;
 
 OscP5 oscP5;
 NetAddress myRemoteLocation;
 
 Composition[] compositions;
 int currentComposition;
+boolean compositionChanged;
 
 float[] controlSignals;
 int currentController;
@@ -28,6 +29,11 @@ float currentControllerValue;
 // float control06;
 // float control07;
 // float control08;
+
+int NOISE_HAIR = 0;
+int SINUSOIDAL_PATH = 1;
+int FLOATING_RAIN = 2;
+int ARC_BRUSH = 3;
 
 void setup()
 {
@@ -44,10 +50,10 @@ void setup()
 	controlSignals = new float[8];
 
 	compositions = new Composition[10];
-	compositions[0] = new Idea01();
-	compositions[1] = new Idea02();
-	compositions[2] = new Idea03();
-	compositions[3] = new Idea04();
+	compositions[NOISE_HAIR] = new NoiseHair();
+	compositions[SINUSOIDAL_PATH] = new SinusoidalPath();
+	compositions[FLOATING_RAIN] = new FloatingRain();
+	compositions[ARC_BRUSH] = new ArcBrush();
 	compositions[4] = new Idea05();
 	compositions[5] = new Idea06();
 	compositions[6] = new Idea07();
@@ -74,6 +80,12 @@ boolean sketchFullScreen()
 
 void draw()
 {
+	if (compositionChanged)
+	{
+		compositions[currentComposition].initialize();
+		compositionChanged = false;
+	}
+
 	compositions[currentComposition].update();
 	compositions[currentComposition].display();
 

@@ -35,7 +35,8 @@ float theX, theY;
 Agent[] agents;
 int nAgents;
 
-public void setup() {
+public void setup()
+{
 	size(displayWidth, displayHeight, OPENGL);
 	smooth();
 	noFill();
@@ -44,7 +45,7 @@ public void setup() {
 
 	theDirection = SOUTHEAST;
 
-	nAgents = 1000;
+	nAgents = 500;
 	agents = new Agent[nAgents];
 
 	if (theDirection == EAST || theDirection == WEST)
@@ -86,7 +87,8 @@ public void setup() {
 	}		
 }
 
-public void draw() {
+public void draw()
+{
 	noStroke();
 	fill(0, 40);
 	rect(0, 0, width, height);

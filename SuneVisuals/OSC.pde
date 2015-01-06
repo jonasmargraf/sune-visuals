@@ -1,7 +1,7 @@
 void oscEvent(OscMessage theOscMessage)
 {
 
-	println("Incoming OSC Message: " +  theOscMessage);
+	// println("Incoming OSC Message: " +  theOscMessage);
 
 	if (theOscMessage.checkAddrPattern("/quit"))
 	{
@@ -10,9 +10,14 @@ void oscEvent(OscMessage theOscMessage)
 
 	if (theOscMessage.checkAddrPattern("/composition"))
 	{
-		currentComposition = constrain(theOscMessage.get(0).intValue(),
-										0,
-										(compositions.length - 1));
+		if (currentComposition != theOscMessage.get(0).intValue())
+		{
+			currentComposition = constrain(theOscMessage.get(0).intValue(),
+											0,
+											(compositions.length - 1));
+			compositionChanged = true;							
+		}
+
 	}
 
 	if (theOscMessage.checkAddrPattern("/seed"))
@@ -84,4 +89,65 @@ void oscEvent(OscMessage theOscMessage)
 		// println("control08 = " + control08);
 	}
 	*/
+
+	// SINUSOIDAL PATH
+
+	// pointCount
+	// freqX
+	// freqY
+	// phi
+	// xScalar
+	// yScalar
+	// randomOffset
+	// lineWeight
+	if (theOscMessage.checkAddrPattern("/pointCount"))
+	{
+		compositions[SINUSOIDAL_PATH].pointCount = theOscMessage.get(0).intValue();
+		// compositions[SINUSOIDAL_PATH].initialize();
+		compositionChanged = true;
+		// println("pointCount = " + compositions[SINUSOIDAL_PATH].pointCount);
+		// println("pointCount = " + theOscMessage.get(0).intValue());
+	}
+
+	if (theOscMessage.checkAddrPattern("/freqX"))
+	{
+		compositions[SINUSOIDAL_PATH].freqX = theOscMessage.get(0).floatValue();
+		// println("freqX = " + compositions[SINUSOIDAL_PATH].freqX);
+	}
+
+	if (theOscMessage.checkAddrPattern("/freqY"))
+	{
+		compositions[SINUSOIDAL_PATH].freqY = theOscMessage.get(0).floatValue();
+		// println("freqY = " + compositions[SINUSOIDAL_PATH].freqY);
+	}
+	
+	if (theOscMessage.checkAddrPattern("/phi"))
+	{
+		compositions[SINUSOIDAL_PATH].phi = theOscMessage.get(0).floatValue();
+		// println("phi = " + compositions[SINUSOIDAL_PATH].phi);
+	}
+	
+	if (theOscMessage.checkAddrPattern("/xScalar"))
+	{
+		compositions[SINUSOIDAL_PATH].xScalar = theOscMessage.get(0).floatValue();
+		// println("xScalar = " + compositions[SINUSOIDAL_PATH].xScalar);
+	}
+
+	if (theOscMessage.checkAddrPattern("/yScalar"))
+	{
+		compositions[SINUSOIDAL_PATH].yScalar = theOscMessage.get(0).floatValue();
+		// println("yScalar = " + compositions[SINUSOIDAL_PATH].yScalar);
+	}
+
+	if (theOscMessage.checkAddrPattern("/randomOffset"))
+	{
+		compositions[SINUSOIDAL_PATH].randomOffset = theOscMessage.get(0).floatValue();
+		// println("randomOffset = " + compositions[SINUSOIDAL_PATH].randomOffset);
+	}
+	
+	if (theOscMessage.checkAddrPattern("/lineWeight"))
+	{
+		compositions[SINUSOIDAL_PATH].lineWeight = theOscMessage.get(0).floatValue();
+		// println("lineWeight = " + compositions[SINUSOIDAL_PATH].lineWeight);
+	}
 }

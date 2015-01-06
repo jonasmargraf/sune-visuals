@@ -34,7 +34,7 @@ void setup()
 	{
 		// CENTER
 		case 0 :
-			nArcStructures = 40;
+			nArcStructures = 30;
 			for (int i = 0; i < nArcStructures; i++)
 			{
 				arcStructures[i] = new ArcStructure(width / 2, height / 2);
