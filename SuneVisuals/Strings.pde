@@ -10,7 +10,7 @@
 // randomOffset
 // lineWeight
 
-// TODO: manually create 3 SinusoidalString objects
+// TODO:
 // individual frequency control
 // modulation
 // color
@@ -59,7 +59,7 @@ class Strings extends Composition
 
 		SinusoidalString()
 		{
-			pointCount = 200;
+			pointCount = 150;
 			phi = 0;
 			xScalar = 0.05;
 			yScalar = 0.05;

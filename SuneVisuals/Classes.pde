@@ -14,9 +14,8 @@ class Composition
 	// STRINGS
 
 	int pathsCount;
-	int maxPoints = 200;
+	int maxPoints = 150;
 	int pointCount;
-	// PVector[] lissajousPoints;
 	float[] xFrequencies = {4.23,	78.423,	3.023};
 	float[] yFrequencies = {13.103,	17,	2.43};
 	float freqX;
