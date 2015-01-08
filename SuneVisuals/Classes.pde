@@ -12,7 +12,6 @@ class Composition
 	// NOISE_HAIR
 
 	// STRINGS
-
 	int pathsCount;
 	int maxPoints = 150;
 	int pointCount;
@@ -37,6 +36,20 @@ class Composition
 	float alphaScalar;
 
 	// FLOATING_RAIN
+	int NORTH = 0;
+	int NORTHEAST = 1; 
+	int EAST = 2;
+	int SOUTHEAST = 3;
+	int SOUTH = 4;
+	int SOUTHWEST = 5;
+	int WEST = 6;
+	int NORTHWEST= 7;
+	int nAgents;
+	float theSpeed = 5;
+	float theDeviation = 15;
+	int theDirection;
+	float theMaxDiameter;
+	float theX, theY;
 
 	// ARC_BRUSH
 

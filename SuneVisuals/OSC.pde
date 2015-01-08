@@ -109,11 +109,6 @@ void oscEvent(OscMessage theOscMessage)
 		// println("pointCount = " + theOscMessage.get(0).intValue());
 	}
 
-
-
-
-
-
 	if (theOscMessage.checkAddrPattern("/freqX_1"))
 	{
 		compositions[STRINGS].xFrequencies[0] = theOscMessage.get(0).floatValue();
@@ -155,11 +150,6 @@ void oscEvent(OscMessage theOscMessage)
 		compositions[STRINGS].phi = theOscMessage.get(0).floatValue();
 		// println("phi = " + compositions[STRINGS].phi);
 	}
-
-
-
-
-
 	
 	if (theOscMessage.checkAddrPattern("/xScalar"))
 	{
