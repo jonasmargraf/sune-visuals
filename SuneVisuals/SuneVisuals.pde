@@ -16,7 +16,7 @@ NetAddress myRemoteLocation;
 
 Composition[] compositions;
 int currentComposition;
-boolean compositionChanged;
+boolean compositionChanged = true;
 
 float[] controlSignals;
 int currentController;
@@ -31,7 +31,7 @@ float currentControllerValue;
 // float control08;
 
 int NOISE_HAIR = 0;
-int SINUSOIDAL_PATH = 1;
+int SINUSOIDAL_PATHS = 1;
 int FLOATING_RAIN = 2;
 int ARC_BRUSH = 3;
 
@@ -43,6 +43,7 @@ void setup()
 	myRemoteLocation = new NetAddress("127.0.0.1", 7778);
 
 	// size(displayWidth, displayHeight, "processing.core.PGraphicsRetina2D", P2D);
+	// size(1280, 720, OPENGL);
 	size(displayWidth, displayHeight, OPENGL);
 	smooth();
 	background(0);
@@ -50,8 +51,9 @@ void setup()
 	controlSignals = new float[8];
 
 	compositions = new Composition[10];
+	
 	compositions[NOISE_HAIR] = new NoiseHair();
-	compositions[SINUSOIDAL_PATH] = new SinusoidalPath();
+	compositions[SINUSOIDAL_PATHS] = new SinusoidalPaths();
 	compositions[FLOATING_RAIN] = new FloatingRain();
 	compositions[ARC_BRUSH] = new ArcBrush();
 	compositions[4] = new Idea05();
@@ -61,7 +63,7 @@ void setup()
 	compositions[8] = new Idea09();
 	compositions[9] = new Idea10();
 
-	currentComposition = 0;
+	currentComposition = 1;
 }
 
 boolean sketchFullScreen()
@@ -80,6 +82,7 @@ boolean sketchFullScreen()
 
 void draw()
 {
+	frameRate(2);
 	if (compositionChanged)
 	{
 		compositions[currentComposition].initialize();

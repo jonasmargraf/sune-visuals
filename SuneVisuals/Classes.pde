@@ -13,10 +13,13 @@ class Composition
 
 	// SINUSOIDAL_PATH
 
+	int pathsCount;
 	int maxPoints = 200;
 	int pointCount;
 	// PVector[] lissajousPoints;
 	PVector[] lissajousPoints = new PVector[maxPoints + 1];
+	float[] xFrequencies;
+	float[] yFrequencies;
 	float freqX;
 	float freqY;
 	float phi;
@@ -25,6 +28,7 @@ class Composition
 	float yMax;
 	float xScalar;
 	float yScalar;
+	float yOffset;
 	float distance;
 	float connectionRadius;
 	float connectionRamp;

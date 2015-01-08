@@ -90,7 +90,7 @@ void oscEvent(OscMessage theOscMessage)
 	}
 	*/
 
-	// SINUSOIDAL PATH
+	// SINUSOIDAL PATHS
 
 	// pointCount
 	// freqX
@@ -102,52 +102,76 @@ void oscEvent(OscMessage theOscMessage)
 	// lineWeight
 	if (theOscMessage.checkAddrPattern("/pointCount"))
 	{
-		compositions[SINUSOIDAL_PATH].pointCount = theOscMessage.get(0).intValue();
-		// compositions[SINUSOIDAL_PATH].initialize();
+		compositions[SINUSOIDAL_PATHS].pointCount = theOscMessage.get(0).intValue();
+		// compositions[SINUSOIDAL_PATHS].initialize();
 		compositionChanged = true;
-		// println("pointCount = " + compositions[SINUSOIDAL_PATH].pointCount);
+		println("pointCount = " + compositions[SINUSOIDAL_PATHS].pointCount);
 		// println("pointCount = " + theOscMessage.get(0).intValue());
 	}
 
-	if (theOscMessage.checkAddrPattern("/freqX"))
+	if (theOscMessage.checkAddrPattern("/freqX_1"))
 	{
-		compositions[SINUSOIDAL_PATH].freqX = theOscMessage.get(0).floatValue();
-		// println("freqX = " + compositions[SINUSOIDAL_PATH].freqX);
+		compositions[SINUSOIDAL_PATHS].xFrequencies[0] = theOscMessage.get(0).floatValue();
+		// println("xFrequencies[0] = " + compositions[SINUSOIDAL_PATHS].xFrequencies[0]);
 	}
 
-	if (theOscMessage.checkAddrPattern("/freqY"))
+	if (theOscMessage.checkAddrPattern("/freqX_2"))
 	{
-		compositions[SINUSOIDAL_PATH].freqY = theOscMessage.get(0).floatValue();
-		// println("freqY = " + compositions[SINUSOIDAL_PATH].freqY);
+		compositions[SINUSOIDAL_PATHS].xFrequencies[1] = theOscMessage.get(0).floatValue();
+		// println("xFrequencies[1] = " + compositions[SINUSOIDAL_PATHS].xFrequencies[1]);
+	}
+
+	if (theOscMessage.checkAddrPattern("/freqX_3"))
+	{
+		compositions[SINUSOIDAL_PATHS].xFrequencies[2] = theOscMessage.get(0).floatValue();
+		// println("xFrequencies[2] = " + compositions[SINUSOIDAL_PATHS].xFrequencies[2]);
+	}
+
+	if (theOscMessage.checkAddrPattern("/freqY_1"))
+	{
+		compositions[SINUSOIDAL_PATHS].yFrequencies[0] = theOscMessage.get(0).floatValue();
+		// println("yFrequencies[0] = " + compositions[SINUSOIDAL_PATHS].yFrequencies[0]);
+	}
+
+	if (theOscMessage.checkAddrPattern("/freqY_2"))
+	{
+		compositions[SINUSOIDAL_PATHS].yFrequencies[1] = theOscMessage.get(0).floatValue();
+		// println("yFrequencies[1] = " + compositions[SINUSOIDAL_PATHS].yFrequencies[1]);
+	}
+
+	if (theOscMessage.checkAddrPattern("/freqY_3"))
+	{
+		compositions[SINUSOIDAL_PATHS].yFrequencies[2] = theOscMessage.get(0).floatValue();
+		// println("yFrequencies[2] = " + compositions[SINUSOIDAL_PATHS].yFrequencies[2]);
 	}
 	
 	if (theOscMessage.checkAddrPattern("/phi"))
 	{
-		compositions[SINUSOIDAL_PATH].phi = theOscMessage.get(0).floatValue();
-		// println("phi = " + compositions[SINUSOIDAL_PATH].phi);
+		compositions[SINUSOIDAL_PATHS].phi = theOscMessage.get(0).floatValue();
+		// println("phi = " + compositions[SINUSOIDAL_PATHS].phi);
 	}
 	
 	if (theOscMessage.checkAddrPattern("/xScalar"))
 	{
-		compositions[SINUSOIDAL_PATH].xScalar = theOscMessage.get(0).floatValue();
-		// println("xScalar = " + compositions[SINUSOIDAL_PATH].xScalar);
+		compositions[SINUSOIDAL_PATHS].xScalar = theOscMessage.get(0).floatValue();
+		// println("xScalar = " + compositions[SINUSOIDAL_PATHS].xScalar);
 	}
 
 	if (theOscMessage.checkAddrPattern("/yScalar"))
 	{
-		compositions[SINUSOIDAL_PATH].yScalar = theOscMessage.get(0).floatValue();
-		// println("yScalar = " + compositions[SINUSOIDAL_PATH].yScalar);
+		compositions[SINUSOIDAL_PATHS].yScalar = theOscMessage.get(0).floatValue();
+		// println("yScalar = " + compositions[SINUSOIDAL_PATHS].yScalar);
 	}
 
 	if (theOscMessage.checkAddrPattern("/randomOffset"))
 	{
-		compositions[SINUSOIDAL_PATH].randomOffset = theOscMessage.get(0).floatValue();
-		// println("randomOffset = " + compositions[SINUSOIDAL_PATH].randomOffset);
+		compositions[SINUSOIDAL_PATHS].randomOffset = theOscMessage.get(0).floatValue();
+		// println("randomOffset = " + compositions[SINUSOIDAL_PATHS].randomOffset);
 	}
 	
 	if (theOscMessage.checkAddrPattern("/lineWeight"))
 	{
-		compositions[SINUSOIDAL_PATH].lineWeight = theOscMessage.get(0).floatValue();
-		// println("lineWeight = " + compositions[SINUSOIDAL_PATH].lineWeight);
+		compositions[SINUSOIDAL_PATHS].lineWeight = theOscMessage.get(0).floatValue();
+		// println("lineWeight = " + compositions[SINUSOIDAL_PATHS].lineWeight);
 	}
 }
