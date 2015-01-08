@@ -11,15 +11,14 @@ class Composition
 
 	// NOISE_HAIR
 
-	// SINUSOIDAL_PATH
+	// STRINGS
 
 	int pathsCount;
 	int maxPoints = 200;
 	int pointCount;
 	// PVector[] lissajousPoints;
-	PVector[] lissajousPoints = new PVector[maxPoints + 1];
-	float[] xFrequencies;
-	float[] yFrequencies;
+	float[] xFrequencies = {4.23,	78.423,	3.023};
+	float[] yFrequencies = {13.103,	17,	2.43};
 	float freqX;
 	float freqY;
 	float phi;
@@ -28,7 +27,9 @@ class Composition
 	float yMax;
 	float xScalar;
 	float yScalar;
-	float yOffset;
+	float yOffset_1;
+	float yOffset_2;
+	float yOffset_3;
 	float distance;
 	float connectionRadius;
 	float connectionRamp;
@@ -41,10 +42,6 @@ class Composition
 	// ARC_BRUSH
 
 	void initialize()
-	{
-	}
-
-	void test()
 	{
 	}
 

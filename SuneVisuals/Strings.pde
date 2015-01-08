@@ -10,80 +10,62 @@
 // randomOffset
 // lineWeight
 
-class SinusoidalPaths extends Composition
+// TODO: manually create 3 SinusoidalString objects
+// individual frequency control
+// modulation
+// color
+
+class Strings extends Composition
 {
-	int pathsCount = 2;
-	SinusoidalPath[] sinusoidalPaths;
+	int pathsCount = 3;
+	int STRING_1 = 0;
+	int STRING_2 = 1;
+	int STRING_3 = 2;
+	SinusoidalString string_1 = new SinusoidalString();
+	SinusoidalString string_2 = new SinusoidalString();
+	SinusoidalString string_3 = new SinusoidalString();
 
-	SinusoidalPaths()
+	Strings()
 	{
-		pathsCount = constrain(pathsCount, 1, 3);
-		sinusoidalPaths = new SinusoidalPath[pathsCount];
-		xFrequencies = new float[pathsCount];
-		yFrequencies = new float[pathsCount];
-
-		xFrequencies[0] = 1.23;
-		yFrequencies[0] = 43.103;
-		xFrequencies[1] = 78.423;
-		yFrequencies[1] = 0;
-		// xFrequencies[2] = 0.023;
-		// yFrequencies[2] = 3.43;
-
-		for (int i = 0; i < pathsCount; i++)
-		{
-			sinusoidalPaths[i] = new SinusoidalPath();
-		}
+		yOffset_1 = (height / pathsCount) * STRING_1 + (height / pathsCount) / 2;
+		yOffset_2 = (height / pathsCount) * STRING_2 + (height / pathsCount) / 2;
+		yOffset_3 = (height / pathsCount) * STRING_3 + (height / pathsCount) / 2;
 	}
 
 	void initialize()
 	{
-		for (int i = 0; i < pathsCount; i++)
-		{
-			// xFrequencies[i] = 4.32;
-			// yFrequencies[i] = 1.023;
-			sinusoidalPaths[i].initialize();
-		}
+		string_1.initialize();
+		string_2.initialize();
+		string_3.initialize();
 	}
 
 	void update()
 	{
-		for (int i = 0; i < pathsCount; i++)
-		{
-			// freqX = xFrequencies[i];
-			// freqY = yFrequencies[i];
-			sinusoidalPaths[i].update(xFrequencies[i], xFrequencies[i], i);
-			// sinusoidalPaths[i].update(i);
-		}
+		string_1.update(xFrequencies[STRING_1], yFrequencies[STRING_1]);
+		string_2.update(xFrequencies[STRING_2], yFrequencies[STRING_2]);
+		string_3.update(xFrequencies[STRING_3], yFrequencies[STRING_3]);
 	}
 
 	void display()
 	{
-		for (int i = 0; i < pathsCount; i++)
-		{
-			yOffset = (height / pathsCount) * i + (height / pathsCount) / 2;
-			sinusoidalPaths[i].display(yOffset);
-			// println("freqX = " + freqX);
-			// println("freqY = " + freqY);
-		}
+		string_1.display(yOffset_1);
+		string_2.display(yOffset_2);
+		string_3.display(yOffset_3);
 	}
 
-	class SinusoidalPath
+	class SinusoidalString
 	{
-		SinusoidalPath()
+		PVector[] lissajousPoints = new PVector[maxPoints + 1];
+
+		SinusoidalString()
 		{
-			// maxPoints = 2000;
 			pointCount = 200;
-			// lissajousPoints = new PVector[maxPoints + 1];
-			// freqX = 4.32;
-			// freqY = 1.023;
 			phi = 0;
 			xScalar = 0.05;
-			yScalar = 0.15;
+			yScalar = 0.05;
 			xMax = width * xScalar;
 			yMax = height * yScalar;
-			yOffset = height / 2;
 			connectionRadius = width * 0.075;
-			// connectionRadius = width * 0.75;
 			connectionRamp = 6;
 			randomOffset = 1;
 			lineWeight = 1;
@@ -110,28 +92,21 @@ class SinusoidalPaths extends Composition
 			background(backgroundColor);
 		}
 
-		void update(float theFreqX, float theFreqY, int index)
-		{	
-			// freqX = theFreqX;
-			// freqY = theFreqY;
+		void update(float theFreqX, float theFreqY)
+		{
 			xMax = width * xScalar;
 			yMax = height * yScalar;
 			for (int i = 0; i < pointCount; i++)
 			{
 				angle = map(i, 0, pointCount, 0, TWO_PI);
 
-				lissajousPoints[i].x = (width / pointCount) * i * 1.1 + sin(angle * xFrequencies[index] + phi) * xMax;
-				// lissajousPoints[i].x = (width / pointCount) * i * 1.1;
-				lissajousPoints[i].y = sin(angle * yFrequencies[index]) * yMax;
-				println("yFrequencies[" + index + "] = " + yFrequencies[index]);
+				lissajousPoints[i].x = (width / pointCount) * i * 1.1 + sin(angle * theFreqX + phi) * xMax;
+				lissajousPoints[i].y = sin(angle * theFreqY) * yMax;
 			}
-			// println("xFrequencies[" + index + "] = " + xFrequencies[index]);
-			// println("yFrequencies[" + index + "] = " + yFrequencies[index]);
 		}
 
 		void display(float theYOffset)
 		{
-			// yOffset = theYOffset;
 			noStroke();
 			fill(backgroundColor, backgroundAlpha);
 			rect(0, 0, width, height);

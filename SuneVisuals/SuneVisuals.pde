@@ -31,7 +31,7 @@ float currentControllerValue;
 // float control08;
 
 int NOISE_HAIR = 0;
-int SINUSOIDAL_PATHS = 1;
+int STRINGS = 1;
 int FLOATING_RAIN = 2;
 int ARC_BRUSH = 3;
 
@@ -51,9 +51,9 @@ void setup()
 	controlSignals = new float[8];
 
 	compositions = new Composition[10];
-	
+
 	compositions[NOISE_HAIR] = new NoiseHair();
-	compositions[SINUSOIDAL_PATHS] = new SinusoidalPaths();
+	compositions[STRINGS] = new Strings();
 	compositions[FLOATING_RAIN] = new FloatingRain();
 	compositions[ARC_BRUSH] = new ArcBrush();
 	compositions[4] = new Idea05();
@@ -82,7 +82,7 @@ boolean sketchFullScreen()
 
 void draw()
 {
-	frameRate(2);
+	// frameRate(2);
 	if (compositionChanged)
 	{
 		compositions[currentComposition].initialize();
@@ -96,4 +96,6 @@ void draw()
 	{
 		frame.setTitle(" " + frameRate);
 	}
+
+	// noLoop();
 }

@@ -1,4 +1,6 @@
 // arcIdea005.pde
+// has yet to be implemented, below is still the placeholder code
+
 class ArcBrush extends Composition
 {
 	void update()

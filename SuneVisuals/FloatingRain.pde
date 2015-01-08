@@ -1,4 +1,5 @@
 // dumbAgent_restrictedRandom002.pde
+// has yet to be implemented, below is still the placeholder code
 
 class FloatingRain extends Composition
 {
