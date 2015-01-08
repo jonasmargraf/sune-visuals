@@ -51,7 +51,7 @@ class Composition
 	float theMaxDiameter;
 	float theX, theY;
 
-	// ARC_BRUSH
+	// ARC_CLUSTER
 
 	void initialize()
 	{

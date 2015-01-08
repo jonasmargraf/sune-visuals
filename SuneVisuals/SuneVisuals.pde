@@ -33,7 +33,7 @@ float currentControllerValue;
 int NOISE_HAIR = 0;
 int STRINGS = 1;
 int FLOATING_RAIN = 2;
-int ARC_BRUSH = 3;
+int ARC_CLUSTER = 3;
 
 void setup()
 {
@@ -55,7 +55,7 @@ void setup()
 	compositions[NOISE_HAIR] = new NoiseHair();
 	compositions[STRINGS] = new Strings();
 	compositions[FLOATING_RAIN] = new FloatingRain();
-	compositions[ARC_BRUSH] = new ArcBrush();
+	compositions[ARC_CLUSTER] = new ArcClusters();
 	compositions[4] = new Idea05();
 	compositions[5] = new Idea06();
 	compositions[6] = new Idea07();
@@ -82,7 +82,6 @@ boolean sketchFullScreen()
 
 void draw()
 {
-	// frameRate(2);
 	if (compositionChanged)
 	{
 		compositions[currentComposition].initialize();
