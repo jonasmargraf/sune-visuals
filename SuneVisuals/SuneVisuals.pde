@@ -55,7 +55,7 @@ void setup()
 	compositions[NOISE_HAIR] = new NoiseHair();
 	compositions[STRINGS] = new Strings();
 	compositions[FLOATING_RAIN] = new FloatingRain();
-	compositions[ARC_CLUSTER] = new ArcClusters();
+	compositions[ARC_CLUSTER] = new ArcCluster();
 	compositions[4] = new Idea05();
 	compositions[5] = new Idea06();
 	compositions[6] = new Idea07();
@@ -63,7 +63,7 @@ void setup()
 	compositions[8] = new Idea09();
 	compositions[9] = new Idea10();
 
-	currentComposition = FLOATING_RAIN;
+	currentComposition = ARC_CLUSTER;
 }
 
 boolean sketchFullScreen()

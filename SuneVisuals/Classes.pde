@@ -52,6 +52,13 @@ class Composition
 	float theX, theY;
 
 	// ARC_CLUSTER
+	int seed;
+	int initialArrangement;
+	int style;
+	int wrapStyle;
+	// int x;
+	// int y;
+	int nArcStructures;
 
 	void initialize()
 	{

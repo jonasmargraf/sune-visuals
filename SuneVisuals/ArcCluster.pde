@@ -1,57 +1,8 @@
-// draw arc of random length
-// decrease opacity over time
-// move mouse to increase arc diameter
+// arcIdea005.pde
+// has yet to be implemented, below is still the placeholder code
 
-// define max diameter, make clusters of these spheres, move them
-
-ArcCluster arcCluster;
-
-void setup()
+class ArcCluster extends Composition
 {
-	size(displayWidth, displayHeight, OPENGL);
-	smooth();
-	noFill();
-	strokeCap(SQUARE);
-	background(255);
-
-	arcCluster = new ArcCluster();
-	arcCluster.initialize();
-}
-
-void draw()
-{
-	arcCluster.update();
-	arcCluster.display();
-
-	frame.setTitle("" + frameRate);
-}
-
-// void mousePressed()
-// {
-// 	seed = int(random(10000));
-// 	for (int i = 0; i < nArcStructures; i++)
-// 		{
-// 			arcStructures[i].initialize();
-// 		}
-// }
-
-// void keyPressed()
-// {
-// 	for (int i = 0; i < nArcStructures; i++)
-// 		{
-// 			arcStructures[i].getNewParameters();
-// 		}
-// }
-
-class ArcCluster
-{
-	int seed;
-	int initialArrangement;
-	int style;
-	int wrapStyle;
-	int x;
-	int y;
-	int nArcStructures;
 	ArcStructure[] arcStructures;
 
 	ArcCluster()
@@ -64,6 +15,8 @@ class ArcCluster
 
 	void initialize()
 	{
+		background(255);
+		
 		switch(initialArrangement)
 		{
 			// CENTER
