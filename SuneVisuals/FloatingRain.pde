@@ -84,7 +84,9 @@ class FloatingRain extends Composition
 	void display()
 	{
 		noStroke();
-		fill(0, 40);
+		backgroundAlpha = 40;
+		backgroundColor = color(0, 0, 0, backgroundAlpha);
+		fill(backgroundColor);
 		rect(0, 0, width, height);
 
 		for (int i = 0; i < nAgents; i++)
@@ -178,7 +180,9 @@ class FloatingRain extends Composition
 		void display()
 		{
 			noFill();
-			stroke (0, 125, 255, 30);
+			drawAlpha = 30;
+			drawColor = color(0, 125, 255, drawAlpha);
+			stroke (drawColor);
 			strokeWeight(diameter * 0.15);
 			ellipse(position.x, position.y, diameter, diameter);
 		}
