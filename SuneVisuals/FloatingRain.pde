@@ -2,6 +2,17 @@
 // interactivity
 // load different svgs
 
+// MIRA control:
+// initialize()
+// direction
+// nAgents
+// stepSize
+// deviation
+// diameter
+// strokeWeight
+// fill
+// stroke
+
 class FloatingRain extends Composition
 {
 	Agent[] agents;
@@ -9,24 +20,31 @@ class FloatingRain extends Composition
 	FloatingRain()
 	{
 		theDirection = SOUTHEAST;
-
 		nAgents = 500;
-		agents = new Agent[nAgents];
+		initialize();
+	}
+
+	void initialize()
+	{
+		nAgents = constrain(nAgents, 1, maxAgents);
+		agents = new Agent[maxAgents];
 
 		if (theDirection == EAST || theDirection == WEST)
 		{
 			theX = width / 2;
-			for (int i = 0; i < nAgents; i++)
+			for (int i = 0; i < maxAgents; i++)
 			{
-				theY = (float(height) / nAgents) * i;
-				theSpeed = 2 + random(5);
+				// theY = (float(height) / nAgents) * i;
+				theY = random(height);
+				speedDeviation = random(speedDeviation);
+				theStepSize = initialSpeed + random(5);
 				theDeviation = 2 + random(15);
 				theMaxDiameter = 10 + random(80);
 
 				agents[i] = new Agent(theX,
 									  theY,
 									  theDirection,
-									  theSpeed,
+									  theStepSize,
 									  theDeviation,
 									  theMaxDiameter);
 			}	
@@ -35,33 +53,31 @@ class FloatingRain extends Composition
 		else
 		{
 			theY = height / 2;
-			for (int i = 0; i < nAgents; i++)
+			for (int i = 0; i < maxAgents; i++)
 			{
-				theX = (float(width) / nAgents) * i;
-				theSpeed = 2 + random(5);
+				// theX = (float(width) / nAgents) * i;
+				theX = random(width);
+				theStepSize = initialSpeed + random(5);
 				theDeviation = 2 + random(15);
 				theMaxDiameter = 30 + random(50);
 
 				agents[i] = new Agent(theX,
 									  theY,
 									  theDirection,
-									  theSpeed,
+									  theStepSize,
 									  theDeviation,
 									  theMaxDiameter);
 			}
 		}	
 	}
 
-	void initialize()
-	{
-
-	}
-
 	void update()
 	{
+		theStepSize = theStepSize + initialSpeed;
+
 		for (int i = 0; i < nAgents; i++)
 		{
-			agents[i].update(theDirection);
+			agents[i].update(theDirection, speed, theSize);
 		}
 	}
 
@@ -83,7 +99,7 @@ class FloatingRain extends Composition
 		PVector direction;
 
 		int theDirection;
-		float speed;
+		float stepSize;
 		float diameter;
 		float maxDiameter;
 		float deviation;
@@ -91,63 +107,63 @@ class FloatingRain extends Composition
 		Agent(	float x, 
 				float y, 
 				int _theDirection, 
-				float _speed, 
+				float _stepSize, 
 				float _deviation, 
 				float _maxDiameter)
 		{
 			position = new PVector(x, y);
 			direction = new PVector();
 			theDirection = _theDirection;
-			speed = _speed;
+			stepSize = _stepSize;
 			deviation = _deviation;
 			maxDiameter = _maxDiameter;
 		}
 
-		void update(int _theDirection)
+		void update(int _theDirection, float _speed, float _size)
 		{
 			theDirection = _theDirection;
-			diameter = random(2, maxDiameter);
+			diameter = random(2, maxDiameter) * _size;
 			// diameter = random(2, 15);
 
 			if (theDirection == NORTH)
 			{
 				direction.x = random(-deviation, deviation);		
-				direction.y = -speed;
+				direction.y = -stepSize;
 			}
 			if (theDirection == NORTHEAST)
 			{
-				direction.x = speed + random(-deviation, deviation);
-				direction.y = -(speed + random(-deviation, deviation));
+				direction.x = stepSize + random(-deviation, deviation);
+				direction.y = -(stepSize + random(-deviation, deviation));
 			}
 			if (theDirection == EAST)
 			{
-				direction.x = speed;
+				direction.x = stepSize;
 				direction.y = random(-deviation, deviation);		
 			}
 			if (theDirection == SOUTHEAST)
 			{
-				direction.x = speed + random(-deviation, deviation);
-				direction.y = speed + random(-deviation, deviation);
+				direction.x = stepSize + random(-deviation, deviation);
+				direction.y = stepSize + random(-deviation, deviation);
 			}
 			if (theDirection == SOUTH)
 			{
 				direction.x = random(-deviation, deviation);		
-				direction.y = speed;
+				direction.y = stepSize;
 			}
 			if (theDirection == SOUTHWEST)
 			{
-				direction.x = -(speed + random(-deviation, deviation));
-				direction.y = speed + random(-deviation, deviation);
+				direction.x = -(stepSize + random(-deviation, deviation));
+				direction.y = stepSize + random(-deviation, deviation);
 			}
 			if (theDirection == WEST)
 			{
-				direction.x = -speed;
+				direction.x = -stepSize;
 				direction.y = random(-deviation, deviation);		
 			}
 			if (theDirection == NORTHWEST)
 			{
-				direction.x = -(speed + random(-deviation, deviation));
-				direction.y = -(speed + random(-deviation, deviation));
+				direction.x = -(stepSize + random(-deviation, deviation));
+				direction.y = -(stepSize + random(-deviation, deviation));
 			}
 
 			if (position.x > width) position.x = 0;
@@ -155,6 +171,7 @@ class FloatingRain extends Composition
 			if (position.y > height) position.y = 0;
 			if (position.y < 0) position.y = height;
 
+			direction.mult(_speed);
 			position.add(direction);
 		}
 

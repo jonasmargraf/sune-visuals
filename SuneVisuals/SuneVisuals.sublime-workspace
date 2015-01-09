@@ -1,0 +1,648 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Arc",
+				"ArcClusters"
+			],
+			[
+				"yo",
+				"yOffset_1"
+			],
+			[
+				"yfre",
+				"yFrequencies"
+			],
+			[
+				"S",
+				"STRING_1"
+			],
+			[
+				"the",
+				"theFreqX"
+			],
+			[
+				"string1",
+				"STRING_1"
+			],
+			[
+				"x",
+				"xFrequencies"
+			],
+			[
+				"max",
+				"max	max"
+			],
+			[
+				"sinpath",
+				"SinusoidalPaths"
+			],
+			[
+				"draw",
+				"drawColor1"
+			],
+			[
+				"composit",
+				"compositionChanged"
+			],
+			[
+				"alpa",
+				"drawAlpha"
+			],
+			[
+				"current",
+				"currentControllerValue"
+			],
+			[
+				"frame",
+				"framerate	frameRate (set)"
+			],
+			[
+				"frameRate",
+				"framerate	frameRate (debug)"
+			],
+			[
+				"tex",
+				"text	text stringdata"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "SuneVisuals.pde",
+			"settings":
+			{
+				"buffer_size": 1986,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/jonasmargraf/Sune/sune-visuals/ideas/ideas.txt",
+			"settings":
+			{
+				"buffer_size": 324,
+				"line_ending": "Unix",
+				"name": "dumb agents with restricted path drawing svg shape"
+			}
+		},
+		{
+			"file": "OSC.pde",
+			"settings":
+			{
+				"buffer_size": 4967,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Classes.pde",
+			"settings":
+			{
+				"buffer_size": 3649,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "NoiseHair.pde",
+			"settings":
+			{
+				"buffer_size": 2323,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ArcCluster.pde",
+			"settings":
+			{
+				"buffer_size": 6794,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Strings.pde",
+			"settings":
+			{
+				"buffer_size": 3357,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "FloatingRain.pde",
+			"settings":
+			{
+				"buffer_size": 3366,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 67.0,
+		"selected_items":
+		[
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 111.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/jonasmargraf/Sune/sune-visuals/SuneVisuals/SuneVisuals.sublime-project",
+		"/Users/jonasmargraf/Sune/sune-visuals/ideas/arcIdea006/arcIdea006.pde",
+		"/Users/jonasmargraf/Sune/sune-visuals/SuneVisuals/ArcClusters.pde",
+		"/Users/jonasmargraf/Sune/sune-visuals/ideas/dumbAgent_restrictedRandom003/dumbAgent_restrictedRandom003.pde",
+		"/Users/jonasmargraf/Sune/sune-visuals/ideas/LissajousIdea002/LissajousIdea002.pde",
+		"/Users/jonasmargraf/Sune/SUNE_VISUALS_SPECS.txt",
+		"/Users/jonasmargraf/Sune/sune-visuals/.gitignore",
+		"/Users/jonasmargraf/Sune/sune-visuals/SuneVisuals/.gitignore",
+		"/Users/jonasmargraf/Desktop/setlist11-23.txt",
+		"/Users/jonasmargraf/Desktop/monomachine_patches.txt",
+		"/Users/jonasmargraf/Desktop/MA_Deadlines.txt",
+		"/Users/jonasmargraf/Dropbox/DavidMoore_491VideoClip/clip_ideas.txt",
+		"/Users/jonasmargraf/Desktop/screenshotConcatenator/screenshotConcatenator.pde",
+		"/Users/jonasmargraf/Dropbox/Apple.txt",
+		"/Users/jonasmargraf/Resume + CV + Work/Resume2014.txt",
+		"/Users/jonasmargraf/Desktop/PIL_concatenate.py",
+		"/Users/jonasmargraf/Desktop/randCapture.py",
+		"/Users/jonasmargraf/Dropbox/Lena18_Slideshow_720p/script.py",
+		"/Users/jonasmargraf/Projects/Lena 18/LiebeLena18.txt",
+		"/Applications/SuperCollider/README_OS_X.md",
+		"/Users/jonasmargraf/Desktop/camera_positions.json"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"x",
+			"FLOATING_RAIN",
+			"ARC_CLUSTERS",
+			"ArcClusters",
+			"arcClusters",
+			"ArcClusters",
+			"arcClusters",
+			"ArcClusters",
+			"update",
+			"nArcStructures",
+			"ArcBrush",
+			"ARC_BRUSH",
+			"ArcBrush",
+			"theDirection",
+			"/",
+			"	//",
+			"background",
+			"backgroun",
+			"display",
+			", yOffset_",
+			"//",
+			"float[] ",
+			"STRING_2",
+			"STRING_3",
+			"STRING_2",
+			");",
+			"yFrequency",
+			" =",
+			"STRING_1 ",
+			"STRING_1",
+			"STRING_2",
+			"STRING_1",
+			"xFrequencies",
+			"STRING_3",
+			"STRING_2",
+			"STRING_1",
+			"pathsCount",
+			"SinusoidalString",
+			"STRING",
+			"1",
+			"update",
+			"initialize",
+			"string_1",
+			"yFrequencies",
+			"xFrequencies",
+			"g",
+			"strings",
+			"SINUSOIDAL_PATH",
+			"strings",
+			"SINUSOIDAL_PATHS",
+			"sinusoidalPaths",
+			"SinusoidalPaths",
+			"sinusoidalPaths",
+			"SinusoidalPaths",
+			"SinusoidalPath",
+			"xF",
+			"[f]",
+			"f",
+			"[i]",
+			"i",
+			"index",
+			"theFreqX",
+			"index",
+			"xF",
+			"x",
+			"println",
+			"xFrequencies",
+			"X",
+			"println",
+			"x",
+			"[3]",
+			"[2]",
+			"[1]",
+			"2",
+			"[]",
+			"freqY",
+			"/fr",
+			"freqY_1",
+			"if",
+			"freqy",
+			"/freqY",
+			"freqY",
+			"sinusoidalPaths",
+			"value2",
+			"xFrequencies",
+			"xFrequencies[]",
+			"xFrequencies",
+			"freqX_",
+			"freqX_1",
+			"xFrequencies",
+			"freqX",
+			"if",
+			"X",
+			"pathscount",
+			"c",
+			"pathscount",
+			"<=",
+			"sinusoidalPaths.length",
+			"sinusoidalPaths",
+			"length",
+			"pathsCount",
+			"sinusoidalPaths",
+			"pathsCount",
+			"sinusoidalPath[i]",
+			"SinusoidalPath",
+			"sinusoidalPath",
+			"SINUSOIDAL_PATH",
+			"dra",
+			"127",
+			"x",
+			"println",
+			"yScalar",
+			"line",
+			");",
+			"int",
+			"pointCount",
+			"line",
+			"{",
+			"pointCount",
+			"pointfreCount",
+			"200",
+			"currentComposition",
+			"pointCount",
+			"SINUSOIDALPATH",
+			"ArcBrush",
+			"FloatingRain",
+			"SinusoidalPath",
+			"update"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "SuneVisuals.pde",
+					"settings":
+					{
+						"buffer_size": 1986,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								785,
+								785
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Processing/Syntax/Processing.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 379.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/jonasmargraf/Sune/sune-visuals/ideas/ideas.txt",
+					"settings":
+					{
+						"buffer_size": 324,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								324,
+								324
+							]
+						],
+						"settings":
+						{
+							"auto_name": "dumb agents with restricted path drawing svg shape",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "OSC.pde",
+					"settings":
+					{
+						"buffer_size": 4967,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2770,
+								2770
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Processing/Syntax/Processing.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Classes.pde",
+					"settings":
+					{
+						"buffer_size": 3649,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								357,
+								357
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Processing/Syntax/Processing.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "NoiseHair.pde",
+					"settings":
+					{
+						"buffer_size": 2323,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								821,
+								821
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Processing/Syntax/Processing.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "ArcCluster.pde",
+					"settings":
+					{
+						"buffer_size": 6794,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								172,
+								172
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Processing/Syntax/Processing.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Strings.pde",
+					"settings":
+					{
+						"buffer_size": 3357,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								158,
+								158
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Processing/Syntax/Processing.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "FloatingRain.pde",
+					"settings":
+					{
+						"buffer_size": 3366,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								48,
+								48
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Processing/Syntax/Processing.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 113.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

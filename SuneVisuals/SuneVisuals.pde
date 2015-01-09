@@ -9,7 +9,7 @@
 import oscP5.*;
 import netP5.*;
 
-boolean DEBUG = true;
+boolean DEBUG = false;
 
 OscP5 oscP5;
 NetAddress myRemoteLocation;
@@ -17,6 +17,7 @@ NetAddress myRemoteLocation;
 Composition[] compositions;
 int currentComposition;
 boolean compositionChanged = true;
+boolean init = true;
 
 float[] controlSignals;
 int currentController;
@@ -63,7 +64,7 @@ void setup()
 	compositions[8] = new Idea09();
 	compositions[9] = new Idea10();
 
-	currentComposition = ARC_CLUSTER;
+	currentComposition = FLOATING_RAIN;
 }
 
 boolean sketchFullScreen()
@@ -82,10 +83,11 @@ boolean sketchFullScreen()
 
 void draw()
 {
-	if (compositionChanged)
+	if (compositionChanged || init)
 	{
 		compositions[currentComposition].initialize();
 		compositionChanged = false;
+		init = false;
 	}
 
 	compositions[currentComposition].update();
@@ -97,4 +99,9 @@ void draw()
 	}
 
 	// noLoop();
+}
+
+void keyPressed()
+{
+	// compositions[FLOATING_RAIN].initialize();
 }

@@ -1,7 +1,7 @@
 void oscEvent(OscMessage theOscMessage)
 {
 
-	// println("Incoming OSC Message: " +  theOscMessage);
+	println("Incoming OSC Message: " +  theOscMessage);
 
 	if (theOscMessage.checkAddrPattern("/quit"))
 	{
@@ -173,5 +173,47 @@ void oscEvent(OscMessage theOscMessage)
 	{
 		compositions[STRINGS].lineWeight = theOscMessage.get(0).floatValue();
 		// println("lineWeight = " + compositions[STRINGS].lineWeight);
+	}
+
+	// FLOATING_RAIN
+
+	// // MIRA control:
+	// initialize()
+	// direction
+	// nAgents
+	// speed
+	// deviation
+	// diameter
+	// strokeWeight
+	// fill
+	// stroke
+	if (theOscMessage.checkAddrPattern("/FloatingRain_initialize"))
+	{
+		init = true;
+	}
+
+	if (theOscMessage.checkAddrPattern("/FloatingRain_direction"))
+	{
+
+		compositions[FLOATING_RAIN].theDirection = 
+				constrain(theOscMessage.get(0).intValue(), 0, 7);
+	}
+
+	if (theOscMessage.checkAddrPattern("/FloatingRain_nAgents"))
+	{
+		compositions[FLOATING_RAIN].nAgents = 
+				constrain(theOscMessage.get(0).intValue(), 1, 800);
+	}
+
+	if (theOscMessage.checkAddrPattern("/FloatingRain_speed"))
+	{
+		compositions[FLOATING_RAIN].speed = 
+				constrain(theOscMessage.get(0).floatValue(), 0, 5);
+	}
+
+	if (theOscMessage.checkAddrPattern("/FloatingRain_size"))
+	{
+		compositions[FLOATING_RAIN].theSize = 
+				constrain(theOscMessage.get(0).floatValue(), 0.1, 4);
 	}
 }

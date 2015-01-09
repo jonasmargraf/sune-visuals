@@ -44,10 +44,16 @@ class Composition
 	int SOUTHWEST = 5;
 	int WEST = 6;
 	int NORTHWEST= 7;
+	int maxAgents = 800;
 	int nAgents;
-	float theSpeed = 5;
+	// float theSpeed = 5;
+	float theStepSize;
+	float initialSpeed = 2;
+	float speed = 1;
+	float speedDeviation = 5;
 	float theDeviation = 15;
 	int theDirection;
+	float theSize = 1;
 	float theMaxDiameter;
 	float theX, theY;
 
