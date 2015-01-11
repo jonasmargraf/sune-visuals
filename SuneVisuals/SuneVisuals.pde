@@ -18,6 +18,7 @@ Composition[] compositions;
 int currentComposition;
 boolean compositionChanged = true;
 boolean init = true;
+boolean clearScreen;
 
 float[] controlSignals;
 int currentController;
@@ -64,7 +65,7 @@ void setup()
 	compositions[8] = new Idea09();
 	compositions[9] = new Idea10();
 
-	currentComposition = FLOATING_RAIN;
+	currentComposition = ARC_CLUSTER;
 }
 
 boolean sketchFullScreen()
@@ -83,12 +84,26 @@ boolean sketchFullScreen()
 
 void draw()
 {
+	frameRate(30);
+
 	if (compositionChanged || init)
 	{
 		compositions[currentComposition].initialize();
 		compositionChanged = false;
 		init = false;
 	}
+
+	if (clearScreen)
+		{
+			background(compositions[currentComposition].backgroundColor);
+			clearScreen = false;		
+			println("screen cleared");
+		}
+
+	noStroke();
+	fill(compositions[currentComposition].backgroundColor,
+		 compositions[currentComposition].backgroundAlpha);
+	rect(0, 0, width, height);
 
 	compositions[currentComposition].update();
 	compositions[currentComposition].display();

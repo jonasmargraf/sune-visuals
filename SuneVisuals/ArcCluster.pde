@@ -1,5 +1,6 @@
 // arcIdea005.pde
-// has yet to be implemented, below is still the placeholder code
+
+// todo: speed control, color switching, resizing
 
 class ArcCluster extends Composition
 {
@@ -11,11 +12,16 @@ class ArcCluster extends Composition
 		style = 1;
 		wrapStyle = 0;
 		arcStructures = new ArcStructure[100];
+		drawAlpha = 100;
+		backgroundColor = color(0);
+		backgroundAlpha = 0;
 	}
 
 	void initialize()
 	{
-		background(255);
+		background(backgroundColor);
+
+		println(initialArrangement);
 		
 		switch(initialArrangement)
 		{
@@ -31,9 +37,9 @@ class ArcCluster extends Composition
 			// GRID
 			case 1 :
 				nArcStructures = 0;
-				for (x = 100; x < width; x += 200)
+				for (x = 100; x < width; x += 300)
 				{
-					for (y = 100; y < height; y += 200)
+					for (y = 100; y < height; y += 300)
 					{
 						arcStructures[nArcStructures] = new ArcStructure(x, y);
 						arcStructures[nArcStructures].initialize();
@@ -44,9 +50,44 @@ class ArcCluster extends Composition
 		}
 	}
 
+	void getNewParameters()
+	{
+		for (int i = 0; i < nArcStructures; i++)
+		{
+			arcStructures[i].getNewParameters();
+		}
+	}
+
+	void changeDirection()
+	{
+		for (int i = 0; i < nArcStructures; i++)
+		{
+			arcStructures[i].changeDirection();
+		}
+	}
+
 	void update()
 	{
 		randomSeed(seed);
+
+		// println(drawAlpha);
+
+		if (frameCount % 10 == 0)
+		{
+			getNew = true;
+			getNewParameters();
+			getNew = false;		
+		}
+
+		if (changePath)
+		{
+			if (frameCount % 5 == 0)
+			{
+				changeDirection();
+			}
+			// changePath = false;		
+		}
+
 		for (int i = 0; i < nArcStructures; i++)
 		{
 			arcStructures[i].update();
@@ -70,6 +111,7 @@ class ArcCluster extends Composition
 				arcStructures[i].display(style, 2);
 			}
 		}
+		println("in display(), style = " + style);
 	}
 
 	class ArcStructure
@@ -86,22 +128,24 @@ class ArcCluster extends Composition
 		color turquoise;
 		color navy;
 		color _drawColor;
+		float strokeAlpha;
 
 		CircleSegment[] circleSegments = new CircleSegment[3];
 
 		ArcStructure(float theX, float theY)
 		{
-			white = color(255, 50);
-			rosa = color(255, 127, 140, 150);
-			magenta = color(247, 0, 157, 50);
-			yellow = color(255, 255, 0, 50);
-			turquoise = color(5, 167, 134, 50);
-			navy = color(13, 60, 116, 50);
+			white = color(255);
+			rosa = color(255, 127, 140);
+			magenta = color(247, 0, 157);
+			yellow = color(255, 255, 0);
+			turquoise = color(5, 167, 134);
+			navy = color(13, 60, 116);
+			strokeAlpha = random(100);
 			position = new PVector(theX, theY);
 			direction = new PVector();
 			arcDisplayStyle = 0;
-			maxDiameter = height * random(0.1);
-			speed = random(3, 8);
+			maxDiameter = height * random(0.1) + height * 0.01;
+			speed = random(5, 9);
 			
 			for (int i = 0; i < circleSegments.length; i++)
 			{
@@ -120,8 +164,6 @@ class ArcCluster extends Composition
 
 		void getNewParameters()
 		{
-			changeDirection();
-
 			for (int i = 0; i < circleSegments.length; i++)
 				{
 					circleSegments[i].getNewParameters();
@@ -132,6 +174,7 @@ class ArcCluster extends Composition
 		{
 			direction.x = random(-speed, speed);
 			direction.y = random(-speed, speed);
+			// direction.rotate(random(-0.5, 0.5));
 		}
 
 		void update()
@@ -185,6 +228,7 @@ class ArcCluster extends Composition
 				}
 			}
 
+			direction.rotate(random(-0.05, 0.05));
 			position.add(direction);
 
 			// if (millis() % 500 <= 10)
@@ -201,9 +245,15 @@ class ArcCluster extends Composition
 
 		void display(int arcDisplayStyle, int drawColor)
 		{
+			strokeAlpha -= 1;
+			if (strokeAlpha <= -50)
+			{
+				strokeAlpha = 100;
+			}
+
 			for (int i = 0; i < circleSegments.length; i++)
 			{
-				circleSegments[i].display(arcDisplayStyle, drawColor);
+				circleSegments[i].display(arcDisplayStyle, drawColor, strokeAlpha);
 			}
 		}
 
@@ -267,19 +317,22 @@ class ArcCluster extends Composition
 				}
 			}
 
-			void display(int fillStyle, int theDrawColor)
+			void display(int fillStyle, int theDrawColor, float strokeAlpha)
 			{
 				if (theDrawColor == 0)
 				{
-					_drawColor = white;
+					_drawColor = turquoise;
+					// _drawColor = magenta;
 				}
 				if (theDrawColor == 1)
 				{
-					_drawColor = navy;
+					_drawColor = turquoise;
+					// _drawColor = navy;
 				}
 				if (theDrawColor == 2)
 				{
-					_drawColor = navy;
+					_drawColor = turquoise;
+					// _drawColor = yellow;
 				}
 
 				switch (fillStyle)
@@ -287,9 +340,9 @@ class ArcCluster extends Composition
 					// PIE SLICES
 					case 0 :
 						// fill(255, 127, 140, 50);
-						fill(255, 15);
+						fill(_drawColor, strokeAlpha * 0.15);
 						// stroke(255, 127, 140, 150);
-						stroke(_drawColor);
+						stroke(255, strokeAlpha);
 						// stroke(0, 15);
 						strokeWeight(1);
 						arc(position.x,
@@ -304,7 +357,7 @@ class ArcCluster extends Composition
 						noFill();
 						// stroke(_drawColor);
 						// stroke(255, 50);
-						stroke(0, 5);
+						stroke(255, strokeAlpha * 0.2);
 						strokeWeight(random(maxDiameter/4));
 						arc(position.x,
 							position.y,
@@ -313,7 +366,7 @@ class ArcCluster extends Composition
 							angleOrigin,
 							angleOrigin + angleSize);
 						// stroke(255, 127, 140, 150);
-						stroke(_drawColor);
+						stroke(_drawColor, strokeAlpha);
 						// stroke(255, 150);
 						strokeWeight(1);
 						arc(position.x,

@@ -8,6 +8,11 @@ void oscEvent(OscMessage theOscMessage)
 		exit();
 	}
 
+	if (theOscMessage.checkAddrPattern("/clearScreen"))
+	{
+		clearScreen = true;
+	}
+
 	if (theOscMessage.checkAddrPattern("/composition"))
 	{
 		if (currentComposition != theOscMessage.get(0).intValue())
@@ -215,5 +220,43 @@ void oscEvent(OscMessage theOscMessage)
 	{
 		compositions[FLOATING_RAIN].theSize = 
 				constrain(theOscMessage.get(0).floatValue(), 0.1, 4);
+	}
+
+	// ARC_CLUSTER
+
+	// initialize()
+	// getNew()
+	// style
+	// wrapStyle
+	if (theOscMessage.checkAddrPattern("/ArcCluster_initialize"))
+	{
+		init = true;
+	}
+
+	if (theOscMessage.checkAddrPattern("/ArcCluster_getNew"))
+	{
+		compositions[ARC_CLUSTER].getNew = true;
+	}
+
+	if (theOscMessage.checkAddrPattern("/ArcCluster_changePath"))
+	{
+		if (theOscMessage.get(0).intValue() == 1)
+		{
+			compositions[ARC_CLUSTER].changePath = true;
+		}
+		else if (theOscMessage.get(0).intValue() == 0)
+		{
+			compositions[ARC_CLUSTER].changePath = false;
+		}	
+	}
+// initialArrangement and drawStyle are not working atm
+	if (theOscMessage.checkAddrPattern("/ArcCluster_initialArrangement"))
+	{
+		compositions[ARC_CLUSTER].initialArrangement = 
+										theOscMessage.get(0).intValue();
+	}
+	if (theOscMessage.checkAddrPattern("/ArcCluster_drawStyle"))
+	{
+		compositions[ARC_CLUSTER].style = theOscMessage.get(0).intValue();
 	}
 }

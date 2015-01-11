@@ -65,6 +65,8 @@ class Composition
 	// int x;
 	// int y;
 	int nArcStructures;
+	boolean getNew;
+	boolean changePath;
 
 	void initialize()
 	{
