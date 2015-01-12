@@ -8,15 +8,66 @@ class Composition
 	float backgroundAlpha;
 	color drawColor;
 	float drawAlpha;
+	float speed;
+
+	int WHITE = 0;
+	int BLACK = 1;
+	int ROSA = 2;
+	int DARK_PINK = 3;
+	int MAGENTA = 4;
+	int FLIEDER = 5;
+	int TURQUOISE = 6;
+	int NAVY = 7;
+	int OLIVE = 8;
+	int YELLOW = 9;
+
+	// color[] palette = new color[10];
+	// // palette = new color[10];
+	// palette[WHITE] = new color(255);
+	// palette[BLACK] = new color(0);
+	// palette[ROSA] = new color(255, 127, 140);
+	// palette[DARK_PINK] = new color(#F7008F);
+	// palette[MAGENTA] = new color(#F700BC);
+	// palette[FLIEDER] = new color(#EC86FF);
+	// palette[TURQUOISE] = new color(#35CCAE);
+	// palette[NAVY] = new color(#0D3C74);
+	// palette[OLIVE] = new color(#759983);
+	// palette[YELLOW] = new color(#FFF100);
+
+	color[] palette = {
+						// WHITE
+						#FFFFFF,
+						// BLACK
+						#000000,
+						// ROSA
+						#FF7F8C,
+						// DARK_PINK
+						#F7008F,
+						// MAGENTA
+						#940825,
+						// FLIEDER
+						#EC86FF,
+						// TURQUOISE
+						#35CCAE,
+						// NAVY
+						#0D3C74,
+						// OLIVE
+						#759983,
+						// YELLOW
+						#FFF100
+					};
 
 	// NOISE_HAIR
+	int agentsCount;
+	float noiseScale;
+	float noiseStrength;
 
 	// STRINGS
 	int pathsCount;
 	int maxPoints = 150;
 	int pointCount;
 	float[] xFrequencies = {4.23,	78.423,	3.023};
-	float[] yFrequencies = {13.103,	17.0,		2.43};
+	float[] yFrequencies = {13.103,	17.0,	2.43};
 	float freqX;
 	float freqY;
 	float phi;
@@ -49,7 +100,7 @@ class Composition
 	// float theSpeed = 5;
 	float theStepSize;
 	float initialSpeed = 2;
-	float speed = 1;
+	// float speed = 1;
 	float speedDeviation = 5;
 	float theDeviation = 15;
 	int theDirection;
@@ -88,6 +139,7 @@ class Composition
 	}
 }
 
+/*
 class Idea05 extends Composition
 {
 	void update()
@@ -231,4 +283,4 @@ class Idea10 extends Composition
 		text("Idea10", 0, 0);
 	}	
 }
-
+*/

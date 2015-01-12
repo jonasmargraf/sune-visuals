@@ -13,6 +13,12 @@ void oscEvent(OscMessage theOscMessage)
 		clearScreen = true;
 	}
 
+	if (theOscMessage.checkAddrPattern("/backgroundAlpha"))
+	{
+		compositions[currentComposition].backgroundAlpha = 
+											theOscMessage.get(0).floatValue();
+	}
+
 	if (theOscMessage.checkAddrPattern("/composition"))
 	{
 		if (currentComposition != theOscMessage.get(0).intValue())
@@ -30,70 +36,28 @@ void oscEvent(OscMessage theOscMessage)
 		compositions[currentComposition].seed();
 	}
 
-	if (theOscMessage.checkAddrPattern("/controlSignal"))
+	// NOISE_HAIR
+	// controls: agentsCount, noiseScale, noiseStrength, speed
+
+	if (theOscMessage.checkAddrPattern("/NoiseHair_agentsCount"))
 	{
-		int currentController = theOscMessage.get(0).intValue();
-		float currentControllerValue = theOscMessage.get(1).floatValue();
-		controlSignals[currentController] = currentControllerValue;
-
-		println("theOscMessage.get(0).intValue() = " + theOscMessage.get(0).intValue());
-		println("theOscMessage.get(1).floatValue() = " + theOscMessage.get(1).floatValue());
-		println(controlSignals[currentController]);
-
-		// TO DO: send this controller array only to currently active composition,
-		// then map it to parameters there.
+		compositions[NOISE_HAIR].agentsCount = theOscMessage.get(0).intValue();
 	}
 
-	/*
-
-	if (theOscMessage.checkAddrPattern("/control01"))
+	if (theOscMessage.checkAddrPattern("/NoiseHair_noiseScale"))
 	{
-		control01 = theOscMessage.get(0).floatValue();
-		// println("control01 = " + control01);
+		compositions[NOISE_HAIR].noiseScale = theOscMessage.get(0).floatValue();
 	}
 
-	if (theOscMessage.checkAddrPattern("/control02"))
+	if (theOscMessage.checkAddrPattern("/NoiseHair_noiseStrength"))
 	{
-		control02 = theOscMessage.get(0).floatValue();
-		// println("control02 = " + control02);
+		compositions[NOISE_HAIR].noiseStrength = theOscMessage.get(0).floatValue();
 	}
 
-	if (theOscMessage.checkAddrPattern("/control03"))
+	if (theOscMessage.checkAddrPattern("/NoiseHair_speed"))
 	{
-		control03 = theOscMessage.get(0).floatValue();
-		// println("control03 = " + control03);
+		compositions[NOISE_HAIR].speed = theOscMessage.get(0).floatValue();
 	}
-
-	if (theOscMessage.checkAddrPattern("/control04"))
-	{
-		control04 = theOscMessage.get(0).floatValue();
-		// println("control04 = " + control04);
-	}
-
-	if (theOscMessage.checkAddrPattern("/control05"))
-	{
-		control05 = theOscMessage.get(0).floatValue();
-		// println("control05 = " + control05);
-	}
-
-	if (theOscMessage.checkAddrPattern("/control06"))
-	{
-		control06 = theOscMessage.get(0).floatValue();
-		// println("control06 = " + control06);
-	}
-
-	if (theOscMessage.checkAddrPattern("/control07"))
-	{
-		control07 = theOscMessage.get(0).floatValue();
-		// println("control07 = " + control07);
-	}
-
-	if (theOscMessage.checkAddrPattern("/control08"))
-	{
-		control08 = theOscMessage.get(0).floatValue();
-		// println("control08 = " + control08);
-	}
-	*/
 
 	// STRINGS
 
@@ -244,6 +208,7 @@ void oscEvent(OscMessage theOscMessage)
 		{
 			compositions[ARC_CLUSTER].changePath = true;
 		}
+
 		else if (theOscMessage.get(0).intValue() == 0)
 		{
 			compositions[ARC_CLUSTER].changePath = false;
@@ -255,6 +220,7 @@ void oscEvent(OscMessage theOscMessage)
 		compositions[ARC_CLUSTER].initialArrangement = 
 										theOscMessage.get(0).intValue();
 	}
+
 	if (theOscMessage.checkAddrPattern("/ArcCluster_drawStyle"))
 	{
 		compositions[ARC_CLUSTER].style = theOscMessage.get(0).intValue();

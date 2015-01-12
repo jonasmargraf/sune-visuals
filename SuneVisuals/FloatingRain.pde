@@ -19,6 +19,7 @@ class FloatingRain extends Composition
 
 	FloatingRain()
 	{
+		speed = 1;
 		theDirection = SOUTHEAST;
 		nAgents = 500;
 		initialize();
@@ -26,6 +27,10 @@ class FloatingRain extends Composition
 
 	void initialize()
 	{
+		backgroundAlpha = 40;
+		backgroundColor = color(0, backgroundAlpha);
+		fill(backgroundColor);
+		rect(0, 0, width, height);
 		nAgents = constrain(nAgents, 1, maxAgents);
 		agents = new Agent[maxAgents];
 
@@ -84,10 +89,6 @@ class FloatingRain extends Composition
 	void display()
 	{
 		noStroke();
-		backgroundAlpha = 40;
-		backgroundColor = color(0, 0, 0, backgroundAlpha);
-		fill(backgroundColor);
-		rect(0, 0, width, height);
 
 		for (int i = 0; i < nAgents; i++)
 		{

@@ -1,22 +1,14 @@
 class NoiseHair extends Composition
 {	
-	// variable1 = controlSignals[0] * scalingFactor1;
-	// variable2 = controlSignals[1] * scalingFactor2;
-	// variable3 = controlSignals[2] * scalingFactor3;
-	// variable4 = controlSignals[3] * scalingFactor4;
-	// variable5 = controlSignals[4] * scalingFactor5;
-	// variable6 = controlSignals[5] * scalingFactor6;
-	// variable7 = controlSignals[6] * scalingFactor7;
-	// variable8 = controlSignals[7] * scalingFactor8;
-
-	int agentsCount = 2000;
-	Agent[] agents = new Agent[10000];
-	float noiseScale = 500;
-	float noiseStrength = 2;
-	float speed = 4;
+	Agent[]	agents = new Agent[10000];
 
 	NoiseHair()
 	{
+		agentsCount = 2000;
+		noiseScale = 500;
+		noiseStrength = 2;
+		speed = 4;
+
 		for (int i = 0; i < agents.length; i++)
 		{
 			agents[i] = new Agent();
@@ -37,35 +29,26 @@ class NoiseHair extends Composition
 
 	void initialize()
 	{
+		backgroundColor = color(255);
+		backgroundAlpha = 10;
+		fill(backgroundColor,backgroundAlpha);
+		rect(0, 0, width, height);
 	}
 
 	void update()
 	{	
-		backgroundColor = color(0);
-		backgroundAlpha = 10;
-		drawColor = color(255);
+		drawColor = palette[BLACK];
 		drawAlpha = 220;
 		noiseSeed(nSeed);
 		randomSeed(rSeed);
-
-		agentsCount = int(controlSignals[0] * 5000);
-		noiseScale = controlSignals[1] * 500;
-		noiseStrength = controlSignals[2] * 50;
-		speed = controlSignals[3] * 20;
-		// variable5 = controlSignals[4] * scalingFactor5;
-		// variable6 = controlSignals[5] * scalingFactor6;
-		// variable7 = controlSignals[6] * scalingFactor7;
-		// variable8 = controlSignals[7] * scalingFactor8;
 	}
 
 	void display()
 	{
 		noStroke();
-		fill(backgroundColor,backgroundAlpha);
-		rect(0, 0, width, height);
 		stroke(drawColor, drawAlpha);
 		strokeCap(SQUARE);
-		strokeWeight(3);
+		strokeWeight(1);
 
 		for (int i = 0; i < agentsCount; i++)
 		{
@@ -89,7 +72,7 @@ class NoiseHair extends Composition
 
 		void update()
 		{
-			angle = noise(p.x / noiseScale, p.y / noiseScale, 300) * noiseStrength;
+			angle = noise(p.x / noiseScale, p.y / noiseScale, 20) * noiseStrength;
 
 			p.x += cos(angle) * stepSize * speed;
 			p.y += sin(angle) * stepSize * speed;

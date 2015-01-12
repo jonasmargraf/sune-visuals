@@ -9,7 +9,7 @@
 import oscP5.*;
 import netP5.*;
 
-boolean DEBUG = false;
+boolean DEBUG = true;
 
 OscP5 oscP5;
 NetAddress myRemoteLocation;
@@ -23,14 +23,6 @@ boolean clearScreen;
 float[] controlSignals;
 int currentController;
 float currentControllerValue;
-// float control01;
-// float control02;
-// float control03;
-// float control04;
-// float control05;
-// float control06;
-// float control07;
-// float control08;
 
 int NOISE_HAIR = 0;
 int STRINGS = 1;
@@ -50,20 +42,18 @@ void setup()
 	smooth();
 	background(0);
 
-	controlSignals = new float[8];
-
 	compositions = new Composition[10];
 
 	compositions[NOISE_HAIR] = new NoiseHair();
 	compositions[STRINGS] = new Strings();
 	compositions[FLOATING_RAIN] = new FloatingRain();
 	compositions[ARC_CLUSTER] = new ArcCluster();
-	compositions[4] = new Idea05();
-	compositions[5] = new Idea06();
-	compositions[6] = new Idea07();
-	compositions[7] = new Idea08();
-	compositions[8] = new Idea09();
-	compositions[9] = new Idea10();
+	// compositions[4] = new Idea05();
+	// compositions[5] = new Idea06();
+	// compositions[6] = new Idea07();
+	// compositions[7] = new Idea08();
+	// compositions[8] = new Idea09();
+	// compositions[9] = new Idea10();
 
 	currentComposition = ARC_CLUSTER;
 }
@@ -84,7 +74,7 @@ boolean sketchFullScreen()
 
 void draw()
 {
-	frameRate(30);
+	// frameRate(30);
 
 	if (compositionChanged || init)
 	{

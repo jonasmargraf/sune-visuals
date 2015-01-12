@@ -1,6 +1,6 @@
 // arcIdea005.pde
 
-// todo: speed control, color switching, resizing
+// todo: speed control, color switching, resizing, random rotation amount
 
 class ArcCluster extends Composition
 {
@@ -111,7 +111,7 @@ class ArcCluster extends Composition
 				arcStructures[i].display(style, 2);
 			}
 		}
-		println("in display(), style = " + style);
+		// println("in display(), style = " + style);
 	}
 
 	class ArcStructure
@@ -227,7 +227,7 @@ class ArcCluster extends Composition
 					}
 				}
 			}
-
+			// add control for rotation amount here
 			direction.rotate(random(-0.05, 0.05));
 			position.add(direction);
 
@@ -321,18 +321,18 @@ class ArcCluster extends Composition
 			{
 				if (theDrawColor == 0)
 				{
-					_drawColor = turquoise;
-					// _drawColor = magenta;
+					// _drawColor = turquoise;
+					_drawColor = magenta;
 				}
 				if (theDrawColor == 1)
 				{
-					_drawColor = turquoise;
-					// _drawColor = navy;
+					// _drawColor = turquoise;
+					_drawColor = navy;
 				}
 				if (theDrawColor == 2)
 				{
-					_drawColor = turquoise;
-					// _drawColor = yellow;
+					// _drawColor = turquoise;
+					_drawColor = yellow;
 				}
 
 				switch (fillStyle)
@@ -367,6 +367,7 @@ class ArcCluster extends Composition
 							angleOrigin + angleSize);
 						// stroke(255, 127, 140, 150);
 						stroke(_drawColor, strokeAlpha);
+						// stroke(palette[BLACK], strokeAlpha);
 						// stroke(255, 150);
 						strokeWeight(1);
 						arc(position.x,
