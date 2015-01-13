@@ -31,14 +31,15 @@ class NoiseHair extends Composition
 	{
 		backgroundColor = color(255);
 		backgroundAlpha = 10;
+		drawAlpha = 120;
+		lineWeight = 1;
 		fill(backgroundColor,backgroundAlpha);
 		rect(0, 0, width, height);
 	}
 
 	void update()
 	{	
-		drawColor = palette[BLACK];
-		drawAlpha = 220;
+		drawColor = color(palette[BLACK], drawAlpha);
 		noiseSeed(nSeed);
 		randomSeed(rSeed);
 	}
@@ -48,7 +49,7 @@ class NoiseHair extends Composition
 		noStroke();
 		stroke(drawColor, drawAlpha);
 		strokeCap(SQUARE);
-		strokeWeight(1);
+		strokeWeight(lineWeight);
 
 		for (int i = 0; i < agentsCount; i++)
 		{

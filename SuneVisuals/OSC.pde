@@ -8,17 +8,6 @@ void oscEvent(OscMessage theOscMessage)
 		exit();
 	}
 
-	if (theOscMessage.checkAddrPattern("/clearScreen"))
-	{
-		clearScreen = true;
-	}
-
-	if (theOscMessage.checkAddrPattern("/backgroundAlpha"))
-	{
-		compositions[currentComposition].backgroundAlpha = 
-											theOscMessage.get(0).floatValue();
-	}
-
 	if (theOscMessage.checkAddrPattern("/composition"))
 	{
 		if (currentComposition != theOscMessage.get(0).intValue())
@@ -28,7 +17,30 @@ void oscEvent(OscMessage theOscMessage)
 											(compositions.length - 1));
 			compositionChanged = true;							
 		}
+	}
 
+	if (theOscMessage.checkAddrPattern("/clearScreen"))
+	{
+		clearScreen = true;
+	}
+
+	if (theOscMessage.checkAddrPattern("/drawAlpha"))
+	{
+		compositions[currentComposition].drawAlpha = 
+											theOscMessage.get(0).floatValue();
+	}
+
+	if (theOscMessage.checkAddrPattern("/backgroundAlpha"))
+	{
+		compositions[currentComposition].backgroundAlpha = 
+											theOscMessage.get(0).floatValue();
+	}
+
+	if (theOscMessage.checkAddrPattern("/lineWeight"))
+	{
+		compositions[currentComposition].lineWeight = 
+											theOscMessage.get(0).floatValue();
+		// println("lineWeight = " + compositions[STRINGS].lineWeight);
 	}
 
 	if (theOscMessage.checkAddrPattern("/seed"))
@@ -136,12 +148,6 @@ void oscEvent(OscMessage theOscMessage)
 	{
 		compositions[STRINGS].randomOffset = theOscMessage.get(0).floatValue();
 		// println("randomOffset = " + compositions[STRINGS].randomOffset);
-	}
-	
-	if (theOscMessage.checkAddrPattern("/lineWeight"))
-	{
-		compositions[STRINGS].lineWeight = theOscMessage.get(0).floatValue();
-		// println("lineWeight = " + compositions[STRINGS].lineWeight);
 	}
 
 	// FLOATING_RAIN

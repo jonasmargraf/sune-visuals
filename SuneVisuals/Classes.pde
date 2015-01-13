@@ -8,6 +8,7 @@ class Composition
 	float backgroundAlpha;
 	color drawColor;
 	float drawAlpha;
+	float lineWeight;
 	float speed;
 
 	int WHITE = 0;
@@ -83,7 +84,6 @@ class Composition
 	float connectionRadius;
 	float connectionRamp;
 	float randomOffset;
-	float lineWeight;
 	float alphaScalar;
 
 	// FLOATING_RAIN

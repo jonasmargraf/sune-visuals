@@ -55,7 +55,7 @@ void setup()
 	// compositions[8] = new Idea09();
 	// compositions[9] = new Idea10();
 
-	currentComposition = ARC_CLUSTER;
+	currentComposition = STRINGS;
 }
 
 boolean sketchFullScreen()
@@ -109,4 +109,8 @@ void draw()
 void keyPressed()
 {
 	// compositions[FLOATING_RAIN].initialize();
+	if (key == 's')
+	{
+		saveFrame("./frames/####.tif");
+	}
 }
