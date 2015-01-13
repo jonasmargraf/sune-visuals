@@ -46,13 +46,27 @@ class NoiseHair extends Composition
 
 	void display()
 	{
-		noStroke();
-		stroke(drawColor, drawAlpha);
-		strokeCap(SQUARE);
-		strokeWeight(lineWeight);
-
 		for (int i = 0; i < agentsCount; i++)
 		{
+			if (i < (agentsCount * 0.33))
+			{
+				drawColor = palette[BLACK];
+			}
+
+			if (i > (agentsCount * 0.33) && i < (agentsCount * 0.66))
+			{
+				drawColor = palette[NAVY];
+			}
+
+			if (i > (agentsCount * 0.66))
+			{
+				drawColor = palette[NAVY];
+			}
+
+			stroke(drawColor, drawAlpha);
+			strokeCap(SQUARE);
+			strokeWeight(lineWeight);
+
 			agents[i].update();
 		}
 	}
@@ -63,17 +77,25 @@ class NoiseHair extends Composition
 		PVector pOld;
 		float stepSize;
 		float angle;
+		float noiseZ, noisezVelocity = 0.001;
 
 		Agent()
 		{
 			p = new PVector(random(width), random(height));
 			pOld = new PVector(p.x, p.y);
 			stepSize = random(2);
+			setNoiseZRange(0.4);
+		}
+
+		void setNoiseZRange(float theNoiseZRange)
+		{
+			noiseZ = random(theNoiseZRange);
 		}
 
 		void update()
 		{
-			angle = noise(p.x / noiseScale, p.y / noiseScale, 20) * noiseStrength;
+
+			angle = noise(p.x / noiseScale, p.y / noiseScale, noiseZ) * noiseStrength;
 
 			p.x += cos(angle) * stepSize * speed;
 			p.y += sin(angle) * stepSize * speed;
@@ -87,6 +109,8 @@ class NoiseHair extends Composition
 			line(pOld.x, pOld.y, p.x, p.y);
 
 			pOld.set(p);
+
+			noiseZ += noisezVelocity;
 		}
 	}
 }
