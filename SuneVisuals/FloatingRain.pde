@@ -27,8 +27,12 @@ class FloatingRain extends Composition
 
 	void initialize()
 	{
+		colorIndex_1 = NAVY;
+		colorIndex_2 = NAVY;
+		drawAlpha = 30;
 		backgroundAlpha = 40;
-		backgroundColor = color(0, backgroundAlpha);
+		// backgroundColor = color(0, backgroundAlpha);
+		backgroundColor = palette[BLACK];
 		fill(backgroundColor);
 		rect(0, 0, width, height);
 		nAgents = constrain(nAgents, 1, maxAgents);
@@ -88,10 +92,21 @@ class FloatingRain extends Composition
 
 	void display()
 	{
-		noStroke();
+		noFill();
 
 		for (int i = 0; i < nAgents; i++)
 		{
+			if (i < nAgents * 0.2)
+			{
+				drawColor = palette[colorIndex_1];
+				stroke (drawColor, drawAlpha);
+			}
+			else
+			{
+				drawColor = palette[colorIndex_2];
+				stroke (drawColor, drawAlpha);
+			}
+
 			agents[i].display();
 		}
 	}
@@ -180,10 +195,7 @@ class FloatingRain extends Composition
 
 		void display()
 		{
-			noFill();
-			drawAlpha = 30;
-			drawColor = color(0, 125, 255, drawAlpha);
-			stroke (drawColor);
+			// drawColor_1 = color(0, 125, 255, drawAlpha);
 			strokeWeight(diameter * 0.15);
 			ellipse(position.x, position.y, diameter, diameter);
 		}

@@ -48,6 +48,24 @@ void oscEvent(OscMessage theOscMessage)
 		compositions[currentComposition].seed();
 	}
 
+	if (theOscMessage.checkAddrPattern("/colorIndex_1"))
+	{
+		compositions[currentComposition].colorIndex_1 = 
+											theOscMessage.get(0).intValue();
+	}
+
+	if (theOscMessage.checkAddrPattern("/colorIndex_2"))
+	{
+		compositions[currentComposition].colorIndex_2 = 
+											theOscMessage.get(0).intValue();
+	}
+
+	if (theOscMessage.checkAddrPattern("/colorIndex_3"))
+	{
+		compositions[currentComposition].colorIndex_3 = 
+											theOscMessage.get(0).intValue();
+	}
+
 	// NOISE_HAIR
 	// controls: agentsCount, noiseScale, noiseStrength, speed
 
@@ -126,10 +144,19 @@ void oscEvent(OscMessage theOscMessage)
 		// println("yFrequencies[2] = " + compositions[STRINGS].yFrequencies[2]);
 	}
 
-	if (theOscMessage.checkAddrPattern("/phi"))
+	if (theOscMessage.checkAddrPattern("/phiStep_1"))
 	{
-		compositions[STRINGS].phi = theOscMessage.get(0).floatValue();
-		// println("phi = " + compositions[STRINGS].phi);
+		compositions[STRINGS].phiStep_1 = theOscMessage.get(0).floatValue();
+	}
+
+	if (theOscMessage.checkAddrPattern("/phiStep_2"))
+	{
+		compositions[STRINGS].phiStep_2 = theOscMessage.get(0).floatValue();
+	}
+
+	if (theOscMessage.checkAddrPattern("/phiStep_3"))
+	{
+		compositions[STRINGS].phiStep_3 = theOscMessage.get(0).floatValue();
 	}
 	
 	if (theOscMessage.checkAddrPattern("/xScalar"))

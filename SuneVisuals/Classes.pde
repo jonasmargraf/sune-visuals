@@ -7,6 +7,9 @@ class Composition
 	color backgroundColor;
 	float backgroundAlpha;
 	color drawColor;
+	color drawColor_1;
+	color drawColor_2;
+	color drawColor_3;
 	float drawAlpha;
 	float lineWeight;
 	float speed;
@@ -21,6 +24,10 @@ class Composition
 	int NAVY = 7;
 	int OLIVE = 8;
 	int YELLOW = 9;
+
+	int colorIndex_1;
+	int colorIndex_2;
+	int colorIndex_3;
 
 	// color[] palette = new color[10];
 	// // palette = new color[10];
@@ -59,6 +66,7 @@ class Composition
 					};
 
 	// NOISE_HAIR
+	color agentColor;
 	int agentsCount;
 	float noiseScale;
 	float noiseStrength;
@@ -71,7 +79,10 @@ class Composition
 	float[] yFrequencies = {13.103,	17.0,	2.43};
 	float freqX;
 	float freqY;
-	float phi;
+	// float phi;
+	float phiStep_1;
+	float phiStep_2;
+	float phiStep_3;
 	float angle;
 	float xMax;
 	float yMax;

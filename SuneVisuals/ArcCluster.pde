@@ -15,13 +15,14 @@ class ArcCluster extends Composition
 		drawAlpha = 100;
 		backgroundColor = color(0);
 		backgroundAlpha = 0;
+		colorIndex_1 = NAVY;
+		colorIndex_2 = MAGENTA;
+		colorIndex_3 = OLIVE;
 	}
 
 	void initialize()
 	{
-		background(backgroundColor);
-
-		println(initialArrangement);
+		background(palette[BLACK]);
 		
 		switch(initialArrangement)
 		{
@@ -100,15 +101,15 @@ class ArcCluster extends Composition
 		{
 			if (i % 3 == 0)
 			{
-				arcStructures[i].display(style, 0);
+				arcStructures[i].display(style, colorIndex_1);
 			}
 			if (i % 3 == 1)
 			{
-				arcStructures[i].display(style, 1);
+				arcStructures[i].display(style, colorIndex_2);
 			}
 			if (i % 3 == 2)
 			{
-				arcStructures[i].display(style, 2);
+				arcStructures[i].display(style, colorIndex_3);
 			}
 		}
 		// println("in display(), style = " + style);
@@ -335,14 +336,16 @@ class ArcCluster extends Composition
 					_drawColor = yellow;
 				}
 
+				// colorIndex_1 = theDrawColor;
+
 				switch (fillStyle)
 				{
 					// PIE SLICES
 					case 0 :
 						// fill(255, 127, 140, 50);
-						fill(_drawColor, strokeAlpha * 0.15);
+						fill(palette[theDrawColor], strokeAlpha * 0.15);
 						// stroke(255, 127, 140, 150);
-						stroke(255, strokeAlpha);
+						stroke(palette[WHITE], strokeAlpha);
 						// stroke(0, 15);
 						strokeWeight(1);
 						arc(position.x,
@@ -357,7 +360,7 @@ class ArcCluster extends Composition
 						noFill();
 						// stroke(_drawColor);
 						// stroke(255, 50);
-						stroke(255, strokeAlpha * 0.2);
+						stroke(palette[WHITE], strokeAlpha * 0.2);
 						strokeWeight(random(maxDiameter/4));
 						arc(position.x,
 							position.y,
@@ -366,7 +369,7 @@ class ArcCluster extends Composition
 							angleOrigin,
 							angleOrigin + angleSize);
 						// stroke(255, 127, 140, 150);
-						stroke(_drawColor, strokeAlpha);
+						stroke(palette[theDrawColor], strokeAlpha);
 						// stroke(palette[BLACK], strokeAlpha);
 						// stroke(255, 150);
 						strokeWeight(1);

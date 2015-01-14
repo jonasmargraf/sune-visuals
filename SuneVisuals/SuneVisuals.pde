@@ -55,7 +55,7 @@ void setup()
 	// compositions[8] = new Idea09();
 	// compositions[9] = new Idea10();
 
-	currentComposition = STRINGS;
+	currentComposition = FLOATING_RAIN;
 }
 
 boolean sketchFullScreen()

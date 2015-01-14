@@ -30,6 +30,9 @@ class Strings extends Composition
 		yOffset_1 = (height / pathsCount) * STRING_1 + (height / pathsCount) / 2;
 		yOffset_2 = (height / pathsCount) * STRING_2 + (height / pathsCount) / 2;
 		yOffset_3 = (height / pathsCount) * STRING_3 + (height / pathsCount) / 2;
+		phiStep_1 = 0.005;
+		phiStep_2 = -0.01;
+		phiStep_3 = 0.002;
 	}
 
 	void initialize()
@@ -41,9 +44,9 @@ class Strings extends Composition
 
 	void update()
 	{
-		string_1.update(xFrequencies[STRING_1], yFrequencies[STRING_1]);
-		string_2.update(xFrequencies[STRING_2], yFrequencies[STRING_2]);
-		string_3.update(xFrequencies[STRING_3], yFrequencies[STRING_3]);
+		string_1.update(xFrequencies[STRING_1], yFrequencies[STRING_1], phiStep_1);
+		string_2.update(xFrequencies[STRING_2], yFrequencies[STRING_2], phiStep_2);
+		string_3.update(xFrequencies[STRING_3], yFrequencies[STRING_3], phiStep_3);
 	}
 
 	void display()
@@ -56,6 +59,7 @@ class Strings extends Composition
 	class SinusoidalString
 	{
 		PVector[] lissajousPoints = new PVector[maxPoints + 1];
+		float phi;
 
 		SinusoidalString()
 		{
@@ -79,9 +83,11 @@ class Strings extends Composition
 		void initialize()
 		{
 			// drawColor = palette[FLIEDER];
-			drawAlpha = 150;
-			backgroundColor = color(255);
+			drawAlpha = 50;
+			backgroundColor = palette[WHITE];
 			backgroundAlpha = 55;
+			colorIndex_1 = BLACK;
+			colorIndex_2 = NAVY;
 			lissajousPoints = new PVector[maxPoints + 1];
 
 			for (int i = 0; i < pointCount; i++)
@@ -92,7 +98,7 @@ class Strings extends Composition
 			background(backgroundColor);
 		}
 
-		void update(float theFreqX, float theFreqY)
+		void update(float theFreqX, float theFreqY, float phiStep)
 		{
 			xMax = width * xScalar;
 			yMax = height * yScalar;
@@ -103,6 +109,8 @@ class Strings extends Composition
 				lissajousPoints[i].x = (width / pointCount) * i * 1.1 + sin(angle * theFreqX + phi) * xMax;
 				lissajousPoints[i].y = sin(angle * theFreqY) * yMax;
 			}
+
+			phi += phiStep;
 		}
 
 		void display(float theYOffset)
@@ -126,7 +134,7 @@ class Strings extends Composition
 					
 					if (distance <= connectionRadius * 0.5)
 					{
-						drawColor = palette[BLACK];
+						drawColor = palette[colorIndex_1];
 						lissajousPoints[i].x = lissajousPoints[i].x + random(-randomOffset, randomOffset);
 						lissajousPoints[j].x = lissajousPoints[j].x + random(-randomOffset, randomOffset);
 						lissajousPoints[i].y = lissajousPoints[i].y + random(-randomOffset, randomOffset);
@@ -140,7 +148,7 @@ class Strings extends Composition
 
 					else if (distance >= connectionRadius * 0.5 && distance <= connectionRadius)
 					{
-						drawColor = palette[MAGENTA];
+						drawColor = palette[colorIndex_2];
 						lissajousPoints[i].x = lissajousPoints[i].x + random(-randomOffset, randomOffset);
 						lissajousPoints[j].x = lissajousPoints[j].x + random(-randomOffset, randomOffset);
 						lissajousPoints[i].y = lissajousPoints[i].y + random(-randomOffset, randomOffset);

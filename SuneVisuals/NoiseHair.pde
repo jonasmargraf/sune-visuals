@@ -35,11 +35,16 @@ class NoiseHair extends Composition
 		lineWeight = 1;
 		fill(backgroundColor,backgroundAlpha);
 		rect(0, 0, width, height);
+		colorIndex_1 = MAGENTA;
+		colorIndex_2 = WHITE;
+		colorIndex_3 = NAVY;
 	}
 
 	void update()
 	{	
-		drawColor = color(palette[BLACK], drawAlpha);
+		// drawColor_1 = color(palette[MAGENTA]);
+		// drawColor_2 = color(palette[MAGENTA]);
+		// drawColor_3 = color(palette[MAGENTA]);
 		noiseSeed(nSeed);
 		randomSeed(rSeed);
 	}
@@ -50,17 +55,20 @@ class NoiseHair extends Composition
 		{
 			if (i < (agentsCount * 0.33))
 			{
-				drawColor = palette[BLACK];
+				// agentColor = drawColor_1;
+				drawColor = palette[colorIndex_1];
 			}
 
 			if (i > (agentsCount * 0.33) && i < (agentsCount * 0.66))
 			{
-				drawColor = palette[NAVY];
+				// agentColor = drawColor_2;
+				drawColor = palette[colorIndex_2];
 			}
 
 			if (i > (agentsCount * 0.66))
 			{
-				drawColor = palette[NAVY];
+				// agentColor = drawColor_3;
+				drawColor = palette[colorIndex_3];
 			}
 
 			stroke(drawColor, drawAlpha);
