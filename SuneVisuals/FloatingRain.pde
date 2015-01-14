@@ -16,38 +16,6 @@
 class FloatingRain extends Composition
 {
 	Agent[] agents;
-	// PShape shape_02;
-	// PShape shape_03;
-	// PShape shape_05;
-	// PShape shape_076;
-	// PShape shape_08;
-	// PShape shape_082;
-	// PShape shape_09;
-	// PShape shape_152;
-	// PShape shape_157;
-	// PShape shape_164;
-	// PShape shape_186;
-	// PShape shape_A_01;
-	// PShape shape_B_02;
-	// PShape shape_B_10;
-	// PShape shape_D_00;
-	// PShape shape_D_01;
-	// PShape shape_D_02;
-	// PShape shape_D_15;
-	// PShape shape_F_10;
-	// PShape shape_J_11;
-	// PShape shape_J_15;
-	// PShape shape_K_03;
-	// PShape shape_K_05;
-	// PShape shape_K_10;
-	// PShape shape_K_14;
-	// PShape shape_K_15;
-	// PShape konzent_kreise_sw.svg;
-	// PShape module_5.svg;
-	// PShape module_7.svg;
-	// PShape schraffur_farbe.svg;
-	// PShape schraffur_sw.svg;
-	// PShape stern2_sw.svg;
 
 	FloatingRain()
 	{
@@ -59,17 +27,6 @@ class FloatingRain extends Composition
 		drawAlpha = 30;
 		backgroundAlpha = 40;
 		backgroundColor = palette[BLACK];
-
-		// shapes[1] = loadShape("03.svg");
-		// shapes[2] = loadShape("05.svg");
-		// shapes[3] = loadShape("076.svg");
-		// shapes[23] = loadShape("schraffur_sw.svg");
-		// shapes[5] = loadShape("082.svg");
-		// shapes[1] = loadShape("08.svg");
-		// shapes[] = loadShape("09.svg");
-		// shapes[] = loadShape("152.svg");
-		// shapes[] = loadShape("157.svg");
-		// shapes[1] = loadShape("186.svg");
 
 		shapes[ASYM] = loadShape("asym.svg");
 		shapes[CIRCROSS] = loadShape("circross.svg");
