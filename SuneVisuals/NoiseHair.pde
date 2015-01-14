@@ -29,15 +29,16 @@ class NoiseHair extends Composition
 
 	void initialize()
 	{
-		backgroundColor = color(255);
-		backgroundAlpha = 10;
+		clearScreen = true;
+		backgroundColor = palette[WHITE];
+		backgroundAlpha = 0;
 		drawAlpha = 120;
 		lineWeight = 1;
 		fill(backgroundColor,backgroundAlpha);
 		rect(0, 0, width, height);
-		colorIndex_1 = MAGENTA;
+		colorIndex_1 = BLACK;
 		colorIndex_2 = WHITE;
-		colorIndex_3 = NAVY;
+		colorIndex_3 = BLACK;
 	}
 
 	void update()

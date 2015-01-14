@@ -26,7 +26,7 @@ class FloatingRain extends Composition
 		colorIndex_2 = NAVY;
 		drawAlpha = 30;
 		backgroundAlpha = 40;
-		backgroundColor = palette[BLACK];
+		backgroundColor = palette[WHITE];
 
 		shapes[ASYM] = loadShape("asym.svg");
 		shapes[CIRCROSS] = loadShape("circross.svg");
@@ -47,6 +47,21 @@ class FloatingRain extends Composition
 		{
 			shapes[i].disableStyle();
 		}
+
+		// shapes[ASYM].disableStyle();
+		// shapes[CIRCROSS].disableStyle();
+		// shapes[CORNER].disableStyle();
+		// shapes[CROSS].disableStyle();
+		// shapes[DIAMOND].disableStyle();
+		// shapes[EX].disableStyle();
+		// shapes[EX_SMALL].disableStyle();
+		// shapes[EX_THIN].disableStyle();
+		// shapes[HALM].disableStyle();
+		// shapes[KEGEL].disableStyle();
+		// shapes[KINKS].disableStyle();
+		// shapes[KREISE].disableStyle();
+		// shapes[PARALLEL].disableStyle();
+		// shapes[STERN].disableStyle();
 
 		initialize();
 	}
