@@ -16,23 +16,87 @@
 class FloatingRain extends Composition
 {
 	Agent[] agents;
+	// PShape shape_02;
+	// PShape shape_03;
+	// PShape shape_05;
+	// PShape shape_076;
+	// PShape shape_08;
+	// PShape shape_082;
+	// PShape shape_09;
+	// PShape shape_152;
+	// PShape shape_157;
+	// PShape shape_164;
+	// PShape shape_186;
+	// PShape shape_A_01;
+	// PShape shape_B_02;
+	// PShape shape_B_10;
+	// PShape shape_D_00;
+	// PShape shape_D_01;
+	// PShape shape_D_02;
+	// PShape shape_D_15;
+	// PShape shape_F_10;
+	// PShape shape_J_11;
+	// PShape shape_J_15;
+	// PShape shape_K_03;
+	// PShape shape_K_05;
+	// PShape shape_K_10;
+	// PShape shape_K_14;
+	// PShape shape_K_15;
+	// PShape konzent_kreise_sw.svg;
+	// PShape module_5.svg;
+	// PShape module_7.svg;
+	// PShape schraffur_farbe.svg;
+	// PShape schraffur_sw.svg;
+	// PShape stern2_sw.svg;
 
 	FloatingRain()
 	{
 		speed = 1;
 		theDirection = SOUTHEAST;
 		nAgents = 500;
+		colorIndex_1 = NAVY;
+		colorIndex_2 = NAVY;
+		drawAlpha = 30;
+		backgroundAlpha = 40;
+		backgroundColor = palette[BLACK];
+
+		// shapes[1] = loadShape("03.svg");
+		// shapes[2] = loadShape("05.svg");
+		// shapes[3] = loadShape("076.svg");
+		// shapes[23] = loadShape("schraffur_sw.svg");
+		// shapes[5] = loadShape("082.svg");
+		// shapes[1] = loadShape("08.svg");
+		// shapes[] = loadShape("09.svg");
+		// shapes[] = loadShape("152.svg");
+		// shapes[] = loadShape("157.svg");
+		// shapes[1] = loadShape("186.svg");
+		shapes[0] = loadShape("02.svg");
+		shapes[1] = loadShape("164.svg");
+		shapes[2] = loadShape("A_01.svg");
+		shapes[3] = loadShape("B_02.svg");
+		shapes[4] = loadShape("B_10.svg");
+		shapes[5] = loadShape("D_00.svg");
+		shapes[6] = loadShape("D_15.svg");
+		shapes[7] = loadShape("F_10.svg");
+		shapes[8] = loadShape("J_11.svg");
+		shapes[9] = loadShape("J_15.svg");
+		shapes[10] = loadShape("K_15.svg");
+		shapes[11] = loadShape("konzent_kreise_sw.svg");
+		shapes[12] = loadShape("module_5.svg");
+		shapes[13] = loadShape("module_7.svg");
+		shapes[14] = loadShape("stern2_sw.svg");
+
+		for (int i = 0; i < 15; i++)
+		{
+			shapes[i].disableStyle();
+		}
+
 		initialize();
 	}
 
 	void initialize()
 	{
-		colorIndex_1 = NAVY;
-		colorIndex_2 = NAVY;
-		drawAlpha = 30;
-		backgroundAlpha = 40;
 		// backgroundColor = color(0, backgroundAlpha);
-		backgroundColor = palette[BLACK];
 		fill(backgroundColor);
 		rect(0, 0, width, height);
 		nAgents = constrain(nAgents, 1, maxAgents);
@@ -48,7 +112,7 @@ class FloatingRain extends Composition
 				speedDeviation = random(speedDeviation);
 				theStepSize = initialSpeed + random(5);
 				theDeviation = 2 + random(15);
-				theMaxDiameter = 10 + random(80);
+				theMaxDiameter = 20 + random(80);
 
 				agents[i] = new Agent(theX,
 									  theY,
@@ -92,19 +156,21 @@ class FloatingRain extends Composition
 
 	void display()
 	{
-		noFill();
+		// noFill();
 
 		for (int i = 0; i < nAgents; i++)
 		{
 			if (i < nAgents * 0.2)
 			{
 				drawColor = palette[colorIndex_1];
-				stroke (drawColor, drawAlpha);
+				stroke(drawColor, drawAlpha);
+				fill(drawColor, drawAlpha);
 			}
 			else
 			{
 				drawColor = palette[colorIndex_2];
-				stroke (drawColor, drawAlpha);
+				stroke(drawColor, drawAlpha);
+				fill(drawColor, drawAlpha);
 			}
 
 			agents[i].display();
@@ -197,7 +263,8 @@ class FloatingRain extends Composition
 		{
 			// drawColor_1 = color(0, 125, 255, drawAlpha);
 			strokeWeight(diameter * 0.15);
-			ellipse(position.x, position.y, diameter, diameter);
+			// ellipse(position.x, position.y, diameter, diameter);
+			shape(shapes[currentShape], position.x, position.y, diameter, diameter);
 		}
 	}
 }
