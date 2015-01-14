@@ -118,8 +118,24 @@ class Composition
 	float theSize = 1;
 	float theMaxDiameter;
 	float theX, theY;
+
+	int ASYM = 0;
+	int CIRCROSS = 1;
+	int CORNER = 2;
+	int CROSS = 3;
+	int DIAMOND = 4;
+	int EX = 5;
+	int EX_SMALL = 6;
+	int EX_THIN = 7;
+	int HALM = 8;
+	int KEGEL = 9;
+	int KINKS = 10;
+	int KREISE = 11;
+	int PARALLEL = 12;
+	int STERN = 13;
+
 	int currentShape;
-	PShape[] shapes = new PShape[15];
+	PShape[] shapes = new PShape[14];
 
 	// ARC_CLUSTER
 	int seed;

@@ -10,7 +10,5 @@ halm.svg
 kegel.svg
 kinks.svg
 kreise.svg
-list.txt
 parallel.svg
 stern.svg
-unused_svgs

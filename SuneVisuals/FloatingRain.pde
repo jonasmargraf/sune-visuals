@@ -70,23 +70,23 @@ class FloatingRain extends Composition
 		// shapes[] = loadShape("152.svg");
 		// shapes[] = loadShape("157.svg");
 		// shapes[1] = loadShape("186.svg");
-		shapes[0] = loadShape("02.svg");
-		shapes[1] = loadShape("164.svg");
-		shapes[2] = loadShape("A_01.svg");
-		shapes[3] = loadShape("B_02.svg");
-		shapes[4] = loadShape("B_10.svg");
-		shapes[5] = loadShape("D_00.svg");
-		shapes[6] = loadShape("D_15.svg");
-		shapes[7] = loadShape("F_10.svg");
-		shapes[8] = loadShape("J_11.svg");
-		shapes[9] = loadShape("J_15.svg");
-		shapes[10] = loadShape("K_15.svg");
-		shapes[11] = loadShape("konzent_kreise_sw.svg");
-		shapes[12] = loadShape("module_5.svg");
-		shapes[13] = loadShape("module_7.svg");
-		shapes[14] = loadShape("stern2_sw.svg");
 
-		for (int i = 0; i < 15; i++)
+		shapes[ASYM] = loadShape("asym.svg");
+		shapes[CIRCROSS] = loadShape("circross.svg");
+		shapes[CORNER] = loadShape("corner.svg");
+		shapes[CROSS] = loadShape("cross.svg");
+		shapes[DIAMOND] = loadShape("diamond.svg");
+		shapes[EX] = loadShape("ex.svg");
+		shapes[EX_SMALL] = loadShape("ex_small.svg");
+		shapes[EX_THIN] = loadShape("ex_thin.svg");
+		shapes[HALM] = loadShape("halm.svg");
+		shapes[KEGEL] = loadShape("kegel.svg");
+		shapes[KINKS] = loadShape("kinks.svg");
+		shapes[KREISE] = loadShape("kreise.svg");
+		shapes[PARALLEL] = loadShape("parallel.svg");
+		shapes[STERN] = loadShape("stern.svg");
+
+		for (int i = 0; i < 14; i++)
 		{
 			shapes[i].disableStyle();
 		}

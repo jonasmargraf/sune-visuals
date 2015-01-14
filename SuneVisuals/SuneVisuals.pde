@@ -108,11 +108,11 @@ void draw()
 
 void keyPressed()
 {
-	compositions[FLOATING_RAIN].currentShape++;
-	if (compositions[FLOATING_RAIN].currentShape >= compositions[FLOATING_RAIN].shapes.length)
-	{
-		compositions[FLOATING_RAIN].currentShape = 0;
-	}
+	// compositions[FLOATING_RAIN].currentShape++;
+	// if (compositions[FLOATING_RAIN].currentShape >= compositions[FLOATING_RAIN].shapes.length)
+	// {
+	// 	compositions[FLOATING_RAIN].currentShape = 0;
+	// }
 	// compositions[FLOATING_RAIN].initialize();
 	if (key == 's')
 	{

@@ -219,6 +219,13 @@ void oscEvent(OscMessage theOscMessage)
 				constrain(theOscMessage.get(0).floatValue(), 0.1, 4);
 	}
 
+	if (theOscMessage.checkAddrPattern("/FloatingRain_shape"))
+	{
+		compositions[FLOATING_RAIN].currentShape = 
+				constrain(theOscMessage.get(0).intValue(), 
+				0, compositions[FLOATING_RAIN].shapes.length - 1);
+	}
+
 	// ARC_CLUSTER
 
 	// initialize()
