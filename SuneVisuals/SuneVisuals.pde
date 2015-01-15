@@ -69,7 +69,7 @@ void setup()
 	// compositions[8] = new Idea09();
 	// compositions[9] = new Idea10();
 
-	currentComposition = ARC_CLUSTER;
+	currentComposition = FLOATING_RAIN;
 
 	// shapes[ASYM] = loadShape("asym.svg");
 	// shapes[CIRCROSS] = loadShape("circross.svg");

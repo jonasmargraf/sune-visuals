@@ -6,8 +6,8 @@ class NoiseHair extends Composition
 	{
 		agentsCount = 2000;
 		noiseScale = 500;
-		noiseStrength = 2;
-		speed = 4;
+		noiseStrength = 7;
+		speed = 1;
 
 		for (int i = 0; i < agents.length; i++)
 		{
@@ -32,12 +32,12 @@ class NoiseHair extends Composition
 		clearScreen = true;
 		backgroundColor = palette[WHITE];
 		backgroundAlpha = 0;
-		drawAlpha = 120;
+		drawAlpha = 10;
 		lineWeight = 1;
 		fill(backgroundColor,backgroundAlpha);
 		rect(0, 0, width, height);
 		colorIndex_1 = BLACK;
-		colorIndex_2 = WHITE;
+		colorIndex_2 = BLACK;
 		colorIndex_3 = BLACK;
 	}
 
