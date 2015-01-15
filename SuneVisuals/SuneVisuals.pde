@@ -1,10 +1,6 @@
 // TO DO:
 // - dynamic color palette generation 
 // (gradients, mix with half of all objects / agents / lines being white or black...)
-// 
-// - automatic controlSignal mapping
-// 
-// 
 
 import oscP5.*;
 import netP5.*;

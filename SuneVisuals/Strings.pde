@@ -66,7 +66,7 @@ class Strings extends Composition
 			pointCount = 150;
 			phi = 0;
 			xScalar = 0.05;
-			yScalar = 0.05;
+			yScalar = 0.12;
 			xMax = width * xScalar;
 			yMax = height * yScalar;
 			connectionRadius = width * 0.075;
@@ -85,9 +85,10 @@ class Strings extends Composition
 			// drawColor = palette[FLIEDER];
 			drawAlpha = 50;
 			backgroundColor = palette[WHITE];
-			backgroundAlpha = 55;
+			// backgroundAlpha = 55;
+			backgroundAlpha = 0;
 			colorIndex_1 = BLACK;
-			colorIndex_2 = NAVY;
+			colorIndex_2 = TURQUOISE;
 			lissajousPoints = new PVector[maxPoints + 1];
 
 			for (int i = 0; i < pointCount; i++)
