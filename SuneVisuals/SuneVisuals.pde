@@ -9,7 +9,7 @@
 import oscP5.*;
 import netP5.*;
 
-boolean DEBUG = true;
+boolean DEBUG = false;
 
 OscP5 oscP5;
 NetAddress myRemoteLocation;
@@ -28,6 +28,24 @@ int NOISE_HAIR = 0;
 int STRINGS = 1;
 int FLOATING_RAIN = 2;
 int ARC_CLUSTER = 3;
+
+// int ASYM = 0;
+// int CIRCROSS = 1;
+// int CORNER = 2;
+// int CROSS = 3;
+// int DIAMOND = 4;
+// int EX = 5;
+// int EX_SMALL = 6;
+// int EX_THIN = 7;
+// int HALM = 8;
+// int KEGEL = 9;
+// int KINKS = 10;
+// int KREISE = 11;
+// int PARALLEL = 12;
+// int STERN = 13;
+
+// int currentShape;
+// PShape[] shapes = new PShape[14];
 
 void setup()
 {
@@ -55,7 +73,28 @@ void setup()
 	// compositions[8] = new Idea09();
 	// compositions[9] = new Idea10();
 
-	currentComposition = NOISE_HAIR;
+	currentComposition = FLOATING_RAIN;
+
+	// shapes[ASYM] = loadShape("asym.svg");
+	// shapes[CIRCROSS] = loadShape("circross.svg");
+	// shapes[CORNER] = loadShape("corner.svg");
+	// shapes[CROSS] = loadShape("cross.svg");
+	// shapes[DIAMOND] = loadShape("diamond.svg");
+	// shapes[EX] = loadShape("ex.svg");
+	// shapes[EX_SMALL] = loadShape("ex_small.svg");
+	// shapes[EX_THIN] = loadShape("ex_thin.svg");
+	// shapes[HALM] = loadShape("halm.svg");
+	// shapes[KEGEL] = loadShape("kegel.svg");
+	// shapes[KINKS] = loadShape("kinks.svg");
+	// shapes[KREISE] = loadShape("kreise.svg");
+	// shapes[PARALLEL] = loadShape("parallel.svg");
+	// shapes[STERN] = loadShape("stern.svg");
+
+	// for (int i = 0; i < 14; i++)
+	// {
+	// 	shapes[i].disableStyle();
+	// }
+
 }
 
 boolean sketchFullScreen()
@@ -74,7 +113,7 @@ boolean sketchFullScreen()
 
 void draw()
 {
-	// frameRate(30);
+	frameRate(30);
 
 	if (compositionChanged || init)
 	{

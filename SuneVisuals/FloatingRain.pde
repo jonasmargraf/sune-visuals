@@ -26,7 +26,7 @@ class FloatingRain extends Composition
 		colorIndex_2 = NAVY;
 		drawAlpha = 30;
 		backgroundAlpha = 40;
-		backgroundColor = palette[WHITE];
+		backgroundColor = palette[BLACK];
 
 		shapes[ASYM] = loadShape("asym.svg");
 		shapes[CIRCROSS] = loadShape("circross.svg");
