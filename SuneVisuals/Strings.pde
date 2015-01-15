@@ -132,7 +132,7 @@ class Strings extends Composition
 					distance = PVector.dist(lissajousPoints[i], lissajousPoints[j]);
 					alphaScalar = pow(1 / (distance / connectionRadius + 1), connectionRamp);
 					
-					if (distance <= connectionRadius * 0.5)
+					if (distance <= (connectionRadius * 0.7))
 					{
 						drawColor = palette[colorIndex_1];
 						lissajousPoints[i].x = lissajousPoints[i].x + random(-randomOffset, randomOffset);
@@ -146,14 +146,14 @@ class Strings extends Composition
 							 lissajousPoints[j].y);
 					}
 
-					else if (distance >= connectionRadius * 0.5 && distance <= connectionRadius)
+					else if (distance >= (connectionRadius * 0.7) && distance <= connectionRadius)
 					{
 						drawColor = palette[colorIndex_2];
 						lissajousPoints[i].x = lissajousPoints[i].x + random(-randomOffset, randomOffset);
 						lissajousPoints[j].x = lissajousPoints[j].x + random(-randomOffset, randomOffset);
 						lissajousPoints[i].y = lissajousPoints[i].y + random(-randomOffset, randomOffset);
 						lissajousPoints[j].y = lissajousPoints[j].y + random(-randomOffset, randomOffset);
-						stroke(drawColor, drawAlpha);
+						stroke(drawColor, drawAlpha * alphaScalar);
 						line(lissajousPoints[i].x,
 							 lissajousPoints[i].y,
 							 lissajousPoints[j].x,

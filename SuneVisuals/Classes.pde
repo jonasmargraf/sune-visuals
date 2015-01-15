@@ -56,11 +56,14 @@ class Composition
 						// FLIEDER
 						#EC86FF,
 						// TURQUOISE
-						#35CCAE,
+						// #35CCAE,
+						// #15CCB3,
+						#0ACCC5,
 						// NAVY
 						#0D3C74,
 						// OLIVE
-						#759983,
+						// #759983,
+						#243836,
 						// YELLOW
 						#FFF100
 					};
