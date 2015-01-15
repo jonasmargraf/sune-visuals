@@ -15,9 +15,9 @@ class ArcCluster extends Composition
 		drawAlpha = 100;
 		backgroundColor = color(0);
 		backgroundAlpha = 0;
-		colorIndex_1 = NAVY;
-		colorIndex_2 = MAGENTA;
-		colorIndex_3 = OLIVE;
+		colorIndex_1 = BLACK;
+		colorIndex_2 = WHITE;
+		colorIndex_3 = TURQUOISE;
 	}
 
 	void initialize()
