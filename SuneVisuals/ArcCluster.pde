@@ -146,7 +146,7 @@ class ArcCluster extends Composition
 			direction = new PVector();
 			arcDisplayStyle = 0;
 			maxDiameter = height * random(0.1) + height * 0.01;
-			speed = random(5, 9);
+			speed = random(6, 11);
 			
 			for (int i = 0; i < circleSegments.length; i++)
 			{

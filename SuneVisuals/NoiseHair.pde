@@ -7,7 +7,7 @@ class NoiseHair extends Composition
 		agentsCount = 2000;
 		noiseScale = 500;
 		noiseStrength = 7;
-		speed = 1;
+		speed = 10;
 
 		for (int i = 0; i < agents.length; i++)
 		{

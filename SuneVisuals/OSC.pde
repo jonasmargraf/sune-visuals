@@ -1,7 +1,7 @@
 void oscEvent(OscMessage theOscMessage)
 {
 
-	println("Incoming OSC Message: " +  theOscMessage);
+	// println("Incoming OSC Message: " +  theOscMessage);
 
 	if (theOscMessage.checkAddrPattern("/quit"))
 	{

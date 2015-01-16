@@ -134,13 +134,13 @@ class FloatingRain extends Composition
 		{
 			if (i < nAgents * 0.2)
 			{
-				drawColor = palette[colorIndex_1];
+				drawColor = palette[colorIndex_2];
 				stroke(drawColor, drawAlpha);
 				fill(drawColor, drawAlpha);
 			}
 			else
 			{
-				drawColor = palette[colorIndex_2];
+				drawColor = palette[colorIndex_1];
 				stroke(drawColor, drawAlpha);
 				fill(drawColor, drawAlpha);
 			}

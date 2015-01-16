@@ -137,7 +137,7 @@ class Composition
 	int PARALLEL = 12;
 	int STERN = 13;
 
-	int currentShape;
+	int currentShape = HALM;
 	PShape[] shapes = new PShape[14];
 
 	// ARC_CLUSTER
