@@ -5,7 +5,7 @@
 import oscP5.*;
 import netP5.*;
 
-boolean DEBUG = true;
+boolean DEBUG = false;
 
 OscP5 oscP5;
 NetAddress myRemoteLocation;
@@ -50,10 +50,10 @@ void setup()
 	// MaxForLive sends messages to to this address:
 	myRemoteLocation = new NetAddress("127.0.0.1", 7778);
 
-	// size(displayWidth, displayHeight, OPENGL);
+	size(displayWidth, displayHeight, OPENGL);
 	// size(displayWidth, displayHeight, "processing.core.PGraphicsRetina2D", P2D);
 	// size(1280, 720, OPENGL);
-	size(960, 540, OPENGL);
+	// size(960, 540, OPENGL);
 	smooth();
 	background(0);
 
