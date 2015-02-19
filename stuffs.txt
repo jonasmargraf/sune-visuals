@@ -1,0 +1,29 @@
+$15 / hour
+mobile technician - family room specialist
+
+Visuals TODO:
+
+- finish color stuff
+- controls for noisehair
+- make strings move
+- change phi lfo, so that it's inside processing
+- load svgs into floatingrain
+- floating rain swell over time
+
+arccluster size, speed, lineweight
+
+noisehair speed
+strings pattr
+floatingrain bgalpha displays int
+
+
+GC sales number apc40: 550 153 6116
+10-8-2010 $302.79 #000105109 Guitar Center #55 Boston MA
+
+
+M4L:
+
+- multislider for string frequencies
+- "activate" button on each page to switch comps
+- color selector
+- tabbed UI
