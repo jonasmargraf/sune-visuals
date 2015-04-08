@@ -6,6 +6,7 @@ import oscP5.*;
 import netP5.*;
 
 boolean DEBUG = false;
+boolean record;
 
 OscP5 oscP5;
 NetAddress myRemoteLocation;
@@ -53,6 +54,7 @@ void setup()
 	size(displayWidth, displayHeight, OPENGL);
 	// size(displayWidth, displayHeight, "processing.core.PGraphicsRetina2D", P2D);
 	// size(1280, 720, OPENGL);
+	// size(1920, 1080, OPENGL);
 	// size(960, 540, OPENGL);
 	smooth();
 	background(0);
@@ -111,6 +113,7 @@ boolean sketchFullScreen()
 void draw()
 {
 	frameRate(30);
+	noCursor();
 
 	if (compositionChanged || init)
 	{
@@ -134,6 +137,11 @@ void draw()
 	compositions[currentComposition].update();
 	compositions[currentComposition].display();
 
+	if (record)
+	{
+		saveFrame("./frames/####.tif");
+	}
+
 	if (DEBUG)
 	{
 		frame.setTitle(" " + frameRate);
@@ -144,14 +152,22 @@ void draw()
 
 void keyPressed()
 {
-	// compositions[FLOATING_RAIN].currentShape++;
-	// if (compositions[FLOATING_RAIN].currentShape >= compositions[FLOATING_RAIN].shapes.length)
-	// {
-	// 	compositions[FLOATING_RAIN].currentShape = 0;
-	// }
-	// compositions[FLOATING_RAIN].initialize();
 	if (key == 's')
 	{
 		saveFrame("./frames/####.tif");
+	}
+
+	if (DEBUG && key == 'r')
+	{
+		if (record == false)
+		{
+			record = true;
+			println("Now recording frames...");
+		}
+		else
+		{
+			record = false;
+			println("Ended frame recording.");
+		}
 	}
 }
