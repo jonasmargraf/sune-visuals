@@ -2,5 +2,5 @@ build-tmp/
 frames/
 stored_frames/
 renders/
-*.sublime-workspace
-*.sublime-project
+/SuneVisuals/*.sublime-workspace
+/SuneVisuals/*.sublime-project
