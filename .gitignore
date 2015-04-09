@@ -1,5 +1,5 @@
-build-tmp
-frames
-stored_frames
+build-tmp/
+frames/
+stored_frames/
 SuneVisuals.sublime-workspace
-renders
+renders/
