@@ -1,1 +1,6 @@
-build-tmp
+build-tmp/
+frames/
+stored_frames/
+renders/
+/SuneVisuals/*.sublime-workspace
+/SuneVisuals/*.sublime-project
